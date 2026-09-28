@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הפינה הבטוחה שלי 🌿 | המדריך האישי שלי לאוכל ושקט</title>
+  <!-- Google Fonts: Rubik & Heebo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Heebo', 'Rubik', 'sans-serif'],
+          },
+          colors: {
+            safe: {
+              cream: '#FDFBF7',
+              sand: '#F7F3EB',
+              sage: '#8FA89B',
+              sageDark: '#627D70',
+              softPink: '#F4DFDF',
+              lavender: '#E5E0F0',
+              peach: '#FCE7D2',
+              dark: '#2D3748',
+              muted: '#718096'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FDFBF7;
+      color: #2D3748;
+      font-family: 'Heebo', sans-serif;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+    }
+    .breathe-circle {
+      animation: breathe 16s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.45); }
+      50% { transform: scale(1.45); }
+      75% { transform: scale(1); }
+    }
+    .tab-active {
+      background-color: #8FA89B !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 12px rgba(143, 168, 155, 0.35);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-safe-cream flex flex-col antialiased selection:bg-safe-sage selection:text-white">
+
+  <!-- Top Announcement / Mindset Bar -->
+  <header class="bg-gradient-to-r from-emerald-100/70 via-teal-50/80 to-purple-100/70 border-b border-emerald-100 py-2.5 px-4 text-center text-xs sm:text-sm font-medium text-emerald-900 shadow-sm">
+    <div class="max-w-5xl mx-auto flex items-center justify-center gap-2">
+      <i data-lucide="shield-check" class="w-4 h-4 text-emerald-700"></i>
+      <span>חוק הברזל של הפינה שלך: <strong>רק מלח וקינמון</strong> | אפס שקילות, אפס ספירת קלוריות, אפס שיפוטיות ✨</span>
+    </div>
+  </header>
+
+  <!-- Main Hero & Navigation Header -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4 w-full">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-gray-200/60 pb-6">
+      <div class="text-center sm:text-right">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold mb-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          המרחב האישי המוגן שלי
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-800 tracking-tight">הפינה הבטוחה שלי 🌿</h1>
+        <p class="text-sm text-gray-500 mt-0.5">כל מה שאת באמת אוהבת, בדיוק כמו שאת אוהבת, בלי מלחמות בראש.</p>
+      </div>
+
+      <!-- Quick Action / SOS Button -->
+      <div class="flex items-center gap-2">
+        <button onclick="switchTab('sos')" class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-800 font-semibold text-sm transition-all shadow-sm active:scale-95">
+          <i data-lucide="heart" class="w-4 h-4 text-purple-600"></i>
+          <span>לחוצה מפיזיקה/מראה? (SOS)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="flex items-center gap-2 overflow-x-auto py-4 scrollbar-none text-sm font-medium">
+      <button onclick="switchTab('shuffle')" id="tab-btn-shuffle" class="tab-btn px-4 py-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center gap-2 whitespace-nowrap tab-active">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>מה בא לי לאכול? 🎲</span>
+      </button>
+      <button onclick="switchTab('builder')" id="tab-btn-builder" class="tab-btn px-4 py-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center gap-2 whitespace-nowrap">
+        <i data-lucide="utensils" class="w-4 h-4"></i>
+        <span>הרכבת צלחת (Mix & Match) 🍽️</span>
+      </button>
+      <button onclick="switchTab('meals')" id="tab-btn-meals" class="tab-btn px-4 py-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center gap-2 whitespace-nowrap">
+        <i data-lucide="book-open" class="w-4 h-4"></i>
+        <span>הארוחות שלי & שיתוף להורים 📲</span>
+      </button>
+      <button onclick="switchTab('pantry')" id="tab-btn-pantry" class="tab-btn px-4 py-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center gap-2 whitespace-nowrap">
+        <i data-lucide="layers" class="w-4 h-4"></i>
+        <span>המזווה (חלבונים, פחמימות, קראנץ') 📋</span>
+      </button>
+      <button onclick="switchTab('drinks')" id="tab-btn-drinks" class="tab-btn px-4 py-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center gap-2 whitespace-nowrap">
+        <i data-lucide="droplet" class="w-4 h-4"></i>
+        <span>הטריק של הויטמינצ'יק & שתייה 💧</span>
+      </button>
+      <button onclick="switchTab('sos')" id="tab-btn-sos" class="tab-btn px-4 py-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center gap-2 whitespace-nowrap">
+        <i data-lucide="wind" class="w-4 h-4"></i>
+        <span>רגע של שקט 🫁</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 flex-grow pb-12 w-full">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: SHUFFLE & FAST MEAL CHOOSER -->
+    <!-- ========================================== -->
+    <section id="tab-content-shuffle" class="tab-section block">
+      <div class="bg-gradient-to-br from-emerald-50/70 to-teal-50/50 rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-sm text-center relative overflow-hidden mb-8">
+        <div class="max-w-xl mx-auto relative z-10">
+          <span class="inline-block p-3 bg-white rounded-2xl shadow-sm text-emerald-800 mb-3">
+            <i data-lucide="dice-5" class="w-7 h-7 text-emerald-600"></i>
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-800">עייפה? אין כוח לחשוב מה לאכול?</h2>
+          <p class="text-sm text-gray-600 mt-2 mb-6">
+            במקום לעמוד מול המקרר שעה, לחיצה אחת והאתר יבחר עבורך ארוחה מתוך הרשימה המדויקת שלך – בלי שום מרכיבים שאת לא אוהבת!
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-3">
+            <button onclick="pickRandomMeal('all')" class="px-6 py-3.5 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-base shadow-md hover:shadow-lg transition-all flex items-center gap-2 active:scale-95">
+              <i data-lucide="shuffle" class="w-5 h-5"></i>
+              <span>תגריל לי ארוחה עכשיו!</span>
+            </button>
+            <button onclick="pickRandomMeal('quick')" class="px-5 py-3.5 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-sm transition-all shadow-sm active:scale-95">
+              <span>⚡ משהו סופר מהיר (בלי לבשל)</span>
+            </button>
+            <button onclick="pickRandomMeal('sweet')" class="px-5 py-3.5 rounded-2xl bg-pink-100/70 hover:bg-pink-100 border border-pink-200 text-pink-900 font-semibold text-sm transition-all shadow-sm active:scale-95">
+              <span>🍫 בא לי משהו מתוק ומפנק</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generated Meal Card Target -->
+      <div id="shuffle-result-container" class="transition-all duration-300">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-200/80 flex flex-col md:flex-row gap-6 items-center">
+          <div class="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-inner aspect-[4/3] bg-gray-100 relative group">
+            <img id="shuffle-img" src="images/pancakes.jpg" alt="פנקייק חלבון שוקולד" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium">
+              הצעה נבחרת ✨
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span id="shuffle-category" class="px-3 py-1 rounded-full bg-pink-100 text-pink-800 text-xs font-bold">מתוק & חלבון</span>
+                <span id="shuffle-time" class="px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-600 text-xs">10 דקות הכנה</span>
+              </div>
+              <h3 id="shuffle-title" class="text-2xl font-bold text-gray-800 mb-2">פנקייק חלבון פלאפי עם נוטלה ושוקולד לבן</h3>
+              <p id="shuffle-desc" class="text-sm text-gray-600 leading-relaxed mb-4">
+                המתכון המדויק שלך: מעדן חלבון PRO, 2 ביצים, 4 כפות קמח, תמצית וניל, ושוקולד לבן מומס יחד עם נוטלה מעל. משביע, מתוק ומרגיע.
+              </p>
+              <div class="bg-amber-50/80 border border-amber-200/70 rounded-xl p-3 mb-4 text-xs text-amber-900 flex items-start gap-2">
+                <i data-lucide="info" class="w-4 h-4 text-amber-700 shrink-0 mt-0.5"></i>
+                <span id="shuffle-note">טיפ שובע: החלבון מהמעדן והביצים מחזיק אותך שבעה שעות קדימה, והשוקולד נותן את הסיפוק המתוק המושלם בלי שום ייאוש!</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button id="shuffle-whatsapp-btn" onclick="shareCurrentMealToWhatsapp()" class="flex-1 px-4 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow transition-all flex items-center justify-center gap-2 active:scale-95">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>שלחי להורים בוואטסאפ 📲</span>
+              </button>
+              <button onclick="pickRandomMeal('all')" class="px-4 py-3 rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-sm transition-all flex items-center gap-1.5 active:scale-95">
+                <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                <span>הצעה אחרת</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: MIX & MATCH PLATE BUILDER -->
+    <!-- ========================================== -->
+    <section id="tab-content-builder" class="tab-section hidden">
+      <div class="mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800">הרכבת צלחת משביעה (Mix & Match) 🍽️</h2>
+        <p class="text-sm text-gray-600 mt-1">
+          החוק הפשוט שעוצר בולמוסים: <strong>חלבון 1 + פחמימה 1 + מלפפון עם מלח</strong>. בחרי את המרכיבים שלך וצפי בארוחה נבנית:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Step 1: Pick Protein -->
+        <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm flex flex-col">
+          <div class="flex items-center gap-2 text-emerald-800 font-bold mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">1</span>
+            <h3>בחרי חלבון (בסיס השובע):</h3>
+          </div>
+          <div class="space-y-2 flex-grow">
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_protein" value="שניצל ביתי פריך" checked onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="text-sm font-medium text-gray-800">שניצל ביתי פריך וזהוב</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_protein" value="קציצת המבורגר נקייה (בלי גבינה)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="text-sm font-medium text-gray-800">קציצת המבורגר בקר נקייה</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_protein" value="2 ביצי עין / חביתה (רק עם מלח)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="text-sm font-medium text-gray-800">2 ביצי עין / חביתה / קשות (רק מלח)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_protein" value="עוף צלוי בתנור (כמו של אמא)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="text-sm font-medium text-gray-800">עוף צלוי בתנור (כמו של אמא)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_protein" value="ממרח כבד עשיר" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="text-sm font-medium text-gray-800">ממרח כבד (פצצת ברזל!)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_protein" value="משולשי גבינה (בנפרד)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="text-sm font-medium text-gray-800">2 משולשי גבינה רכים</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_protein" value="נקניק חזה בקר / סרוולט קלאסי" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="text-sm font-medium text-gray-800">נקניק חזה בקר / סרוולט</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 2: Pick Carb -->
+        <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm flex flex-col">
+          <div class="flex items-center gap-2 text-amber-800 font-bold mb-3">
+            <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs">2</span>
+            <h3>בחרי פחמימה (אנרגיה ונחמה):</h3>
+          </div>
+          <div class="space-y-2 flex-grow">
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_carb" value="פסטה חמה ונקייה" checked onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+              <span class="text-sm font-medium text-gray-800">פסטה חמה ונקייה</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_carb" value="צ'יפס זהוב (רק עם מלח)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+              <span class="text-sm font-medium text-gray-800">צ'יפס זהוב פריך (מלח בלבד!)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_carb" value="תפוחי אדמה צלויים בתנור" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+              <span class="text-sm font-medium text-gray-800">תפוחי אדמה שחומים בתנור</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_carb" value="לחמנייה חלקה (בלי שומשום)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+              <span class="text-sm font-medium text-gray-800">לחמנייה חלקה (ללא שומשום!)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_carb" value="קרקר פריך דק (פתית / לחמית)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+              <span class="text-sm font-medium text-gray-800">קרקר דק פריך (פתית / לחמית)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_carb" value="לביבות תפוחי אדמה חמות" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+              <span class="text-sm font-medium text-gray-800">לביבות תפוחי אדמה</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
+              <input type="radio" name="builder_carb" value="אורז לבן או בורגול עם מלח" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+              <span class="text-sm font-medium text-gray-800">אורז / בורגול (רק עם מלח)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3: Result & Preview Card -->
+        <div class="bg-gradient-to-b from-white to-emerald-50/40 rounded-3xl p-6 border-2 border-emerald-200 shadow-md flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-gray-150 pb-3 mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-800">הצלחת שהרכבת הרגע ✨</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-semibold">100% לטעמך</span>
+            </div>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-gray-100 shadow-xs">
+                <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0"></i>
+                <div>
+                  <span class="text-xs text-gray-400 block font-medium">חלבון:</span>
+                  <span id="builder-preview-protein" class="text-sm font-bold text-gray-800">שניצל ביתי פריך</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-gray-100 shadow-xs">
+                <i data-lucide="check-circle" class="w-5 h-5 text-amber-600 shrink-0"></i>
+                <div>
+                  <span class="text-xs text-gray-400 block font-medium">פחמימה:</span>
+                  <span id="builder-preview-carb" class="text-sm font-bold text-gray-800">פסטה חמה ונקייה</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-gray-100 shadow-xs">
+                <i data-lucide="check-circle" class="w-5 h-5 text-teal-600 shrink-0"></i>
+                <div>
+                  <span class="text-xs text-gray-400 block font-medium">קראנץ' חובה:</span>
+                  <span class="text-sm font-bold text-gray-800">מלפפון פריך עם מלח גס 🥒</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-emerald-50 rounded-2xl p-3.5 border border-emerald-100 text-xs text-emerald-900 leading-relaxed mb-4">
+              💡 <strong>למה השילוב הזה עובד?</strong><br>
+              הוא נותן לגוף חלבון אמיתי לשריר ולשובע, פחמימה מנחמת שמרגיעה את המוח, וקראנץ' מלוח בלי שום תבלינים שמציקים לך.
+            </div>
+          </div>
+
+          <button onclick="shareBuiltPlateToWhatsapp()" class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>שלחי את הצלחת הזו להורים בוואטסאפ 📲</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: RECOMMENDED MEALS & WHATSAPP SHARING -->
+    <!-- ========================================== -->
+    <section id="tab-content-meals" class="tab-section hidden">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-800">הארוחות המומלצות שלך 📖</h2>
+          <p class="text-sm text-gray-600 mt-0.5">כל הארוחות מותאמות ב-100% לרשימה שלך, עם כפתור ישיר לשליחה להורים.</p>
+        </div>
+        <div class="inline-flex rounded-2xl bg-gray-100 p-1 text-xs font-semibold">
+          <button onclick="filterMeals('all')" class="meal-filter-btn px-3 py-1.5 rounded-xl bg-white text-gray-800 shadow-xs" data-filter="all">הכל</button>
+          <button onclick="filterMeals('lunch')" class="meal-filter-btn px-3 py-1.5 rounded-xl text-gray-600 hover:text-gray-900" data-filter="lunch">צהריים חם</button>
+          <button onclick="filterMeals('quick')" class="meal-filter-btn px-3 py-1.5 rounded-xl text-gray-600 hover:text-gray-900" data-filter="quick">קל ומהיר</button>
+          <button onclick="filterMeals('sweet')" class="meal-filter-btn px-3 py-1.5 rounded-xl text-gray-600 hover:text-gray-900" data-filter="sweet">מתוק ומפנק</button>
+        </div>
+      </div>
+
+      <!-- Meals Grid -->
+      <div id="meals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Meal Cards dynamically rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: THE SAFE PANTRY (MACROS LIST) -->
+    <!-- ========================================== -->
+    <section id="tab-content-pantry" class="tab-section hidden">
+      <div class="mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800">המזווה הבטוח שלי (חלוקת אבות המזון) 📋</h2>
+        <p class="text-sm text-gray-600 mt-1">כל המאכלים שאישרת, מחולקים לפי תפקידם בגוף. את יכולה לסמן מה יש לך בבית כרגע:</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Column 1: Proteins -->
+        <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm">
+          <div class="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-emerald-100 text-emerald-800">
+                <i data-lucide="egg" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <h3 class="font-bold text-gray-800">חלבונים (בסיס השובע)</h3>
+                <span class="text-xs text-gray-400">מונעים את החשק הבלתי נשלט</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">100% שובע</span>
+          </div>
+
+          <div class="space-y-2.5 text-sm" id="pantry-proteins-list"></div>
+        </div>
+
+        <!-- Column 2: Carbs -->
+        <div class="bg-white rounded-3xl p-6 border border-amber-100 shadow-sm">
+          <div class="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-amber-100 text-amber-800">
+                <i data-lucide="wheat" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <h3 class="font-bold text-gray-800">פחמימות מנחמות</h3>
+                <span class="text-xs text-gray-400">נותנות אנרגיה ורוגע למוח</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-bold">אנרגיה</span>
+          </div>
+
+          <div class="space-y-2.5 text-sm" id="pantry-carbs-list"></div>
+        </div>
+
+        <!-- Column 3: Veggies & Treats -->
+        <div class="space-y-6">
+          <!-- Veggies -->
+          <div class="bg-white rounded-3xl p-6 border border-teal-100 shadow-sm">
+            <div class="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="p-2 rounded-xl bg-teal-100 text-teal-800">
+                  <i data-lucide="salad" class="w-5 h-5"></i>
+                </span>
+                <div>
+                  <h3 class="font-bold text-gray-800">ירקות וקראנץ'</h3>
+                  <span class="text-xs text-gray-400">לחות וויטמינים</span>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-2.5 text-sm" id="pantry-veggies-list"></div>
+          </div>
+
+          <!-- Treats -->
+          <div class="bg-gradient-to-br from-pink-50 to-purple-50 rounded-3xl p-6 border border-pink-100 shadow-sm">
+            <div class="flex items-center justify-between pb-3 border-b border-pink-200/60 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="p-2 rounded-xl bg-pink-200/70 text-pink-900">
+                  <i data-lucide="candy" class="w-5 h-5"></i>
+                </span>
+                <div>
+                  <h3 class="font-bold text-gray-800">פינוקים וממתקים</h3>
+                  <span class="text-xs text-pink-700">חלק לגיטימי מהחיים!</span>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-pink-700">בלי אשמה</span>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-3">
+              חטיפים אהובים (תפוצ'יפס, אפרופו), גלידה, ברד קר, עוגות ופנקייק עם נוטלה ושוקולד לבן.
+            </p>
+            <div class="p-3 bg-white/80 rounded-2xl border border-pink-200/50 text-xs text-pink-900 font-medium">
+              ❤️ תזכורת: כשאת אוכלת ארוחה משביעה קודם, את יכולה ליהנות ממתוק בלי שהוא יהפוך לבולמוס מכאיב.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: DRINK HACKS & VITAMINCHIK SLIDER -->
+    <!-- ========================================== -->
+    <section id="tab-content-drinks" class="tab-section hidden">
+      <div class="mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800">הטריק של הויטמינצ'יק & שתייה 💧</h2>
+        <p class="text-sm text-gray-600 mt-1">איך להוריד את הנפיחות בפנים ואת רכבת ההרים של הסוכר, בלי להרגיש חסך בכלל:</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Interactive Vitaminchik Dilution Simulator -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-purple-100 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2.5">
+                <span class="p-2.5 rounded-2xl bg-purple-100 text-purple-800">
+                  <i data-lucide="sliders" class="w-5 h-5"></i>
+                </span>
+                <h3 class="text-lg font-bold text-gray-800">מחשבון דילול ויטמינצ'יק 🍇</h3>
+              </div>
+              <span id="slider-badge" class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">יחס מאוזן</span>
+            </div>
+
+            <p class="text-xs text-gray-500 mb-6">
+              גררי את הסליידר כדי לראות איך תוספת של מים קרים וקרח שומרת על הטעם המתוק אבל חותכת את כמות הסוכר לחצי:
+            </p>
+
+            <!-- Visual Cup Simulation -->
+            <div class="w-full bg-gray-100 rounded-3xl p-4 mb-6 border border-gray-200">
+              <div class="h-36 rounded-2xl overflow-hidden relative flex flex-col-reverse shadow-inner border border-gray-300 bg-blue-50/30">
+                <div id="cup-water" class="w-full bg-sky-200/90 transition-all duration-300 flex items-center justify-center text-xs text-sky-800 font-semibold" style="height: 70%;">
+                  מים קרים + המון קרח 🧊 (<span id="water-pct">70%</span>)
+                </div>
+                <div id="cup-syrup" class="w-full bg-purple-400 transition-all duration-300 flex items-center justify-center text-xs text-white font-bold" style="height: 30%;">
+                  תרכיז ויטמינצ'יק (<span id="syrup-pct">30%</span>)
+                </div>
+              </div>
+            </div>
+
+            <!-- Slider Control -->
+            <div class="mb-4">
+              <div class="flex justify-between text-xs font-semibold text-gray-500 mb-1.5">
+                <span>הרבה מים וקרח (קליל ומתוק)</span>
+                <span>תרכיז כבד (עודף סוכר)</span>
+              </div>
+              <input type="range" id="dilution-slider" min="15" max="50" value="25" oninput="updateDilutionSimulator(this.value)" class="w-full h-2.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600">
+            </div>
+
+            <!-- Dynamic Feedback Box -->
+            <div id="slider-feedback" class="p-3.5 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-purple-900 leading-relaxed">
+              ✨ <strong>האיזון המושלם:</strong> רבע כוס תרכיז, שלושת-רבעי מים ומלא קרח. הטעם מתוק ומרענן בדיוק כמו שאת אוהבת, אבל הגוף שלך מקבל חצי מכמות הסוכר, והפנים פחות נפוחות!
+            </div>
+          </div>
+        </div>
+
+        <!-- Fuze Tea & Barad Wisdom -->
+        <div class="space-y-6">
+          <div class="bg-white rounded-3xl p-6 border border-amber-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="p-2.5 rounded-2xl bg-amber-100 text-amber-800">
+                <i data-lucide="cup-soda" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <h3 class="font-bold text-gray-800">החוק של פיוזטי: "מים עם קרח קודם"</h3>
+                <span class="text-xs text-amber-700 font-medium">כיבוי צמא אמיתי מול חשק</span>
+              </div>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-4">
+              הרבה פעמים הגוף פשוט צמא פיזית, אבל המוח צועק "פיוזטי!". אם תקפידי על חוק פשוט:<br>
+              <strong>לפני כוס פיוזטי, שותים כוס אחת מלאה של מים קרים עם קרח.</strong><br>
+              אחרי שהצמא יכבה – תשתי את הפיוזטי בכיף. את תראי שפתאום תסתפקי בכוס קטנה במקום לגמור בקבוק שלם בלי לשים לב.
+            </p>
+            <div class="bg-amber-50 p-3 rounded-2xl border border-amber-200/80 text-xs text-amber-900 font-semibold flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-amber-700"></i>
+              <span>לא מבטלים את הפיוזטי – רק מוודאים שאת לא שותה אותו מתוך צמא מיובש.</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-pink-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="p-2.5 rounded-2xl bg-pink-100 text-pink-800">
+                <i data-lucide="ice-cream-2" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <h3 class="font-bold text-gray-800">ברד קר = קינוח יומי חגיגי</h3>
+                <span class="text-xs text-pink-700 font-medium">הגדרה נכונה עושה שקט בראש</span>
+              </div>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              ברד זה קפוא, מתוק וטעים להפליא. כשמתייחסים אליו כאל "שתייה" הוא נלגם בלי מחשבה. אבל כשאת אומרת לעצמך: 
+              <strong>"הברד הזה הוא הקינוח היומי שלי היום, ואני הולכת ליהנות ממנו במקסימום"</strong> – הוא מקבל את המקום המכובד שמגיע לו, בלי רגשות אשם.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: SOS CALM & BREATHING ZONE -->
+    <!-- ========================================== -->
+    <section id="tab-content-sos" class="tab-section hidden">
+      <div class="bg-gradient-to-br from-purple-100/60 via-pink-50/50 to-indigo-100/50 rounded-3xl p-6 sm:p-10 border border-purple-200 shadow-sm text-center mb-8">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-200/70 text-purple-900 text-xs font-bold mb-3">
+          <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+          פינת המפלט שלך כשהכל מציף
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-800">רגע של שקט, קחי נשימה 🫁</h2>
+        <p class="text-sm text-gray-600 max-w-lg mx-auto mt-2 mb-8">
+          כיתה י"ב, פיזיקה, מתמטיקה, עתודה, המראה במראה... הראש שלך לפעמים מרגיש כמו סיר לחץ. בואי נעצור ל-60 שניות.
+        </p>
+
+        <!-- Interactive Breathing Circle -->
+        <div class="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto mb-8 flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full bg-purple-200/40 animate-ping opacity-40"></div>
+          <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-purple-300 via-pink-200 to-indigo-300 shadow-lg flex items-center justify-center breathe-circle">
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white/90 backdrop-blur-sm shadow-inner flex flex-col items-center justify-center text-center p-2">
+              <span id="breathe-text" class="text-xs sm:text-sm font-bold text-purple-900 transition-all">שאיפה...</span>
+              <span class="text-[10px] text-gray-400 mt-0.5">לאט פנימה</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-gray-500 max-w-sm mx-auto">
+          עקבי אחרי העיגול: שאיפה עמוקה (4 שניות) ⟵ החזקת אוויר (4 שניות) ⟵ נשיפה ארוכה ואיטית (4 שניות).
+        </div>
+      </div>
+
+      <!-- Quick De-Stressing Thought Cards -->
+      <h3 class="text-lg font-bold text-gray-800 mb-4">מה עובר לך בראש כרגע? לחצי למסר מרגיע:</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-purple-300 transition cursor-pointer" onclick="toggleThoughtCard(1)">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-bold text-gray-800">"אכלתי מלא ממתקים ואני שונאת את עצמי"</span>
+            <i id="thought-icon-1" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition"></i>
+          </div>
+          <div id="thought-content-1" class="hidden text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3 mt-2">
+            <strong>את לא נכשלת!</strong> המוח שלך סך הכל חיפש נחמה ודופמין מול הלחץ של הלימודים. ממתקים לא מגדירים את מי שאת. במקום לכעוס – תשתי כוס מים, תסלחי לעצמך, ותמשיכי כרגיל. ארוחה אחת לא משנה כלום!
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-purple-300 transition cursor-pointer" onclick="toggleThoughtCard(2)">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-bold text-gray-800">"אני מרגישה שמנה ומכוערת (85 קילו)"</span>
+            <i id="thought-icon-2" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition"></i>
+          </div>
+          <div id="thought-content-2" class="hidden text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3 mt-2">
+            <strong>הגוף שלך כרגע מגיב לסטרס ולטראומת העבר.</strong> הנפיחות שאת מרגישה בפנים היא בעיקר נוזלים מסוכר וקורטיזול של חרדה. ברגע שנתחיל לתת לו ארוחות אמיתיות ומשביעות, הוא יירגע מעצמו. את במעבר, זה לא מצב קבוע!
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-purple-300 transition cursor-pointer" onclick="toggleThoughtCard(3)">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-bold text-gray-800">"נמאס לי מפיזיקה, מתמטיקה ועומס י"ב"</span>
+            <i id="thought-icon-3" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition"></i>
+          </div>
+          <div id="thought-content-3" class="hidden text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3 mt-2">
+            <strong>את סוחבת משא של סטודנטית באוניברסיטה בגיל 17.5.</strong> מותר לך להיות עייפה ומותר לקחת יום שלם של מנוחה. שום עתודה ושום ציון לא שווים את הבריאות והשפיות שלך. תורידי הילוך לכמה שעות, העולם יחכה.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky Mobile Bottom Bar -->
+  <footer class="bg-white/90 backdrop-blur-md border-t border-gray-200 py-3 px-4 text-center text-xs text-gray-400 shadow-sm mt-auto">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>הפינה הבטוחה שלי 🌿 | נבנה באהבה ובדיוק מוחלט לטעמך</span>
+      <div class="flex items-center gap-3">
+        <span class="text-emerald-700 font-medium">ללא תבלינים חוץ ממלח וקינמון ✨</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT APP LOGIC & DATA -->
+  <!-- ======================================================== -->
+  <script>
+    const signatureMeals = [
+      {
+        id: 'pancakes',
+        title: 'פנקייק חלבון פלאפי עם נוטלה ושוקולד לבן',
+        category: 'sweet',
+        categoryLabel: 'מתוק & חלבון 🍫',
+        badgeColor: 'bg-pink-100 text-pink-800',
+        time: '10 דקות',
+        image: 'images/pancakes.jpg',
+        desc: 'מעדן חלבון PRO, 2 ביצים, 4 כפות קמח, תמצית וניל, ושוקולד לבן מומס יחד עם נוטלה מעל.',
+        ingredients: [
+          '1 מעדן חלבון (PRO או דומה)',
+          '2 ביצים',
+          '3-5 כפות קמח',
+          'כמה טיפות תמצית וניל',
+          'נוטלה ושוקולד לבן מעל או בפנים'
+        ],
+        instructions: 'לערבב את המעדן, הביצים, הקמח והווניל לבלילה חלקה. לטגן במחבת חמה עד שיש בועות, להפוך, ולפנק בנוטלה ושוקולד לבן מומס מעל!',
+        specialNote: 'בלי שום תבלינים חוץ מקינמון (אם בא) ומלח קורט בלבד!'
+      },
+      {
+        id: 'burger',
+        title: 'המבורגר בקר נקי וצ\'יפס זהוב עם מלח',
+        category: 'lunch',
+        categoryLabel: 'צהריים חם 🍔',
+        badgeColor: 'bg-amber-100 text-amber-800',
+        time: '15 דקות',
+        image: 'images/burger.jpg',
+        desc: 'קציצת בקר איכותית ועסיסית בלחמנייה חלקה ורכה (בלי שומשום, בלי גבינה!), עם צ\'יפס זהוב פריך עם מלח בלבד.',
+        ingredients: [
+          'קציצת המבורגר בקר איכותית',
+          'לחמניית המבורגר חלקה (בלי שומשום בכלל!)',
+          'צ\'יפס זהוב פריך',
+          'מלח בלבד',
+          'קטשופ (אופציונלי בצד)'
+        ],
+        instructions: 'לצלות את הקציצה עם מלח בלבד. לקלות קלות את הלחמנייה החלקה. לטגן או לאפות צ\'יפס זהוב עם מלח בלבד.',
+        specialNote: 'חשוב מאוד: בלי שומשום על הלחמנייה, בלי גבינה, בלי ירקות, ובלי שום תבלינים חוץ ממלח!'
+      },
+      {
+        id: 'schnitzel',
+        title: 'שניצל ביתי פריך עם פסטה ומלפפון',
+        category: 'lunch',
+        categoryLabel: 'צהריים קלאסי 🍗',
+        badgeColor: 'bg-amber-100 text-amber-800',
+        time: '20 דקות',
+        image: 'images/schnitzel.jpg',
+        desc: 'שניצל חזה עוף פריך ומוזהב, פסטה חמה ונקייה, ופרוסות מלפפון פריכות עם מלח גס.',
+        ingredients: [
+          'שניצל חזה עוף בציפוי פירורי לחם פריכים',
+          'פסטה מבושלת נקייה (עם מעט חמאה/מלח)',
+          'מלפפונים טריים חתוכים',
+          'מלח בלבד'
+        ],
+        instructions: 'לטגן את השניצל עד הזהבה. להגיש עם פסטה חמה ומלפפון קר חתוך עם מלח.',
+        specialNote: 'בלי שום פלפל שחור, בלי עשבי תיבול, רק מלח!'
+      },
+      {
+        id: 'eggs',
+        title: '2 ביצי עין ומלפפונים פריכים עם מלח',
+        category: 'quick',
+        categoryLabel: 'בוקר / ערב קל 🍳',
+        badgeColor: 'bg-emerald-100 text-emerald-800',
+        time: '5 דקות',
+        image: 'images/eggs.jpg',
+        desc: '2 ביצי עין מושלמות עם חלמון נוזלי ומלח, מוגשות עם מלפפונים פריכים ופרוסות לחם / פיתה טרייה.',
+        ingredients: [
+          '2 ביצים',
+          'מלפפונים טריים חתוכים גס',
+          'לחם לבן / פיתה / פריכיות',
+          'מלח שולחן / גס'
+        ],
+        instructions: 'לטגן 2 ביצי עין לפי מידת העשייה האהובה עליך עם מלח. להגיש עם מלפפונים ומלח.',
+        specialNote: 'רק מלח! בלי שום תוספת ירק או פלפל שחור.'
+      },
+      {
+        id: 'cheese_crackers',
+        title: 'משולשי גבינה רכים על קרקר פריך ומלפפון',
+        category: 'quick',
+        categoryLabel: 'נשנוש מלוח וקראנצ\'י 🧀',
+        badgeColor: 'bg-emerald-100 text-emerald-800',
+        time: '3 דקות',
+        image: 'images/cheese_crackers.jpg',
+        desc: 'משולשי גבינה רכים מהעטיפה, קרקר דק פריך (פתית/לחמית/Wasa) ומלפפון קראנצ\'י עם מלח.',
+        ingredients: [
+          '2-3 משולשי גבינה מותכת (כמו לה ואש קירי)',
+          'קרקר דק פריך (פתית או לחמית)',
+          'מלפפונים טריים עם מלח'
+        ],
+        instructions: 'לפתוח את המשולשים, למרוח על הקרקר הדק או לאכול ככה ישירות עם ביסים של מלפפון.',
+        specialNote: 'המשולשים נאכלים כמו שהם – לעולם לא מומסים בטוסט חם!'
+      },
+      {
+        id: 'moms_chicken',
+        title: 'עוף ותפוחי אדמה בתנור כמו של אמא',
+        category: 'lunch',
+        categoryLabel: 'בית ומנחם 🍲',
+        badgeColor: 'bg-amber-100 text-amber-800',
+        time: 'של בית',
+        image: 'images/moms_chicken.jpg',
+        desc: 'כרעי עוף ותפוחי אדמה שחומים שנאפו בתנור עם שמן זית ומלח גס עד שהשוליים פריכים.',
+        ingredients: [
+          'עוף (כרעיים / שוקיים)',
+          'תפוחי אדמה חתוכים לקוביות',
+          'שמן זית',
+          'מלח גס בלבד'
+        ],
+        instructions: 'לאפות בתנור חם עד שתפוחי האדמה והעוף מזהיבים ופריכים.',
+        specialNote: 'בלי תבלינים מיותרים – שמן זית ומלח גס בלבד!'
+      },
+      {
+        id: 'chicken_soup',
+        title: 'מרק עוף זהוב עם המון אטריות ושקדי מרק',
+        category: 'lunch',
+        categoryLabel: 'חם ומחבק 🥣',
+        badgeColor: 'bg-amber-100 text-amber-800',
+        time: 'מחמם',
+        image: 'images/chicken_soup.jpg',
+        desc: 'מרק עוף מסונן ונקי לחלוטין (בלי ירקות מבושלים בצלחת!), עמוס באטריות דקות וים שקדי מרק פריכים.',
+        ingredients: [
+          'ציר מרק עוף זהוב וצלול',
+          'אטריות מרק דקות מבושלות',
+          'שקדי מרק פריכים (בשפע!)',
+          'מלח'
+        ],
+        instructions: 'למזוג מרק עוף רותח ונקי לתוך קערה עם אטריות, ולפזר הר של שקדי מרק מעל.',
+        specialNote: 'רק המרק והאטריות – שום חתיכת קישוא, בצל או גזר בצלחת!'
+      },
+      {
+        id: 'liver_toast',
+        title: 'טוסט קלוי עם ממרח כבד ומלפפון',
+        category: 'quick',
+        categoryLabel: 'פצצת ברזל 🥪',
+        badgeColor: 'bg-emerald-100 text-emerald-800',
+        time: '5 דקות',
+        image: 'images/liver_toast.jpg',
+        desc: 'לחם קלוי וקראנצ\'י עם שכבה נדיבה של ממרח כבד עשיר וטעים, לצד מלפפונים פריכים ומלח.',
+        ingredients: [
+          'לחם / פיתה קלויה',
+          'ממרח כבד קלאסי',
+          'מלפפונים טריים עם מלח'
+        ],
+        instructions: 'לקלות טוסט קראנצ\'י, למרוח שכבה יפה של ממרח כבד, ולהגיש עם מלפפון קר.',
+        specialNote: 'ממרח כבד עשיר בברזל, B12 וחלבון – מעולה לאנרגיה כשמותשים מלימודים.'
+      },
+      {
+        id: 'yogurt',
+        title: 'יוגורט קרמי עם גרנולה נקייה וזהובה',
+        category: 'quick',
+        categoryLabel: 'בוקר זריז 🥣',
+        badgeColor: 'bg-pink-100 text-pink-800',
+        time: '2 דקות',
+        image: 'images/yogurt.jpg',
+        desc: 'יוגורט קרמי ועשיר בחלבון עם גרנולה פריכה משיבולת שועל, נקייה לגמרי בלי פירות יבשים או צימוקים.',
+        ingredients: [
+          'יוגורט טבעי / מעדן וניל',
+          'גרנולה רגילה פשוטה (שיבולת שועל קלויה ללא פירות יבשים)',
+          'מעט קינמון (אם בא)'
+        ],
+        instructions: 'למזוג יוגורט לקערית, לפזר מעל גרנולה קראנצ\'ית ולאכול מיד.',
+        specialNote: 'רק גרנולה פשוטה ונקייה בלי שום פירות יבשים!'
+      }
+    ];
+
+    const pantryData = {
+      proteins: [
+        'ביצים (עין, מקושקשת, חביתה, קשות - רק מלח)',
+        'שניצל עוף פריך וזהוב',
+        'קציצת המבורגר בקר נקייה (בלי גבינה)',
+        'עוף צלוי בתנור (כמו של אמא)',
+        'ממרח כבד איכותי (עשיר בברזל)',
+        'משולשי גבינה (בנפרד, לא מומסים)',
+        'נקניק חזה בקר / סרוולט קלאסי',
+        'מעדן חלבון PRO לפנקייקים',
+        'יוגורט עשיר בחלבון',
+        'נקניקיות (בלחמנייה או ליד פסטה)'
+      ],
+      carbs: [
+        'תפוחי אדמה בתנור / אפויים / פירה',
+        'צ\'יפס זהוב פריך (רק מלח)',
+        'לביבות תפוחי אדמה חמות',
+        'פסטה חמה ונקייה',
+        'לחמנייה חלקה (בלי שומשום)',
+        'פיתות טריות / לחם לבן',
+        'קרקר דק פריך (פתית, לחמית, Wasa)',
+        'שקדי מרק פריכים ואטריות דקות',
+        'אורז לבן / בורגול (רק עם מלח)',
+        'גרנולה נקייה ללא פירות יבשים'
+      ],
+      veggies: [
+        'מלפפון טרי חתוך עם מלח גס (הכוכב הראשי! 🥒)',
+        'גזרונים גמדיים פריכים',
+        'אפונה עדינה מבושלת עם מלח (אופציונלי)'
+      ]
+    };
+
+    let currentSelectedMeal = signatureMeals[0];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMealsList('all');
+      renderPantryLists();
+      lucide.createIcons();
+    });
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('tab-active'));
+
+      const activeSection = document.getElementById(`tab-content-${tabId}`);
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (activeSection) activeSection.classList.remove('hidden');
+      if (activeBtn) activeBtn.classList.add('tab-active');
+
+      lucide.createIcons();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function pickRandomMeal(filter) {
+      let pool = signatureMeals;
+      if (filter === 'quick') pool = signatureMeals.filter(m => m.category === 'quick');
+      if (filter === 'sweet') pool = signatureMeals.filter(m => m.category === 'sweet');
+      if (filter === 'lunch') pool = signatureMeals.filter(m => m.category === 'lunch');
+
+      const randomMeal = pool[Math.floor(Math.random() * pool.length)];
+      currentSelectedMeal = randomMeal;
+
+      document.getElementById('shuffle-img').src = randomMeal.image;
+      document.getElementById('shuffle-title').innerText = randomMeal.title;
+      document.getElementById('shuffle-category').innerText = randomMeal.categoryLabel;
+      document.getElementById('shuffle-time').innerText = randomMeal.time;
+      document.getElementById('shuffle-desc').innerText = randomMeal.desc;
+      document.getElementById('shuffle-note').innerText = randomMeal.specialNote;
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 40,
+          spread: 60,
+          origin: { y: 0.7 }
+        });
+      }
+
+      lucide.createIcons();
+    }
+
+    function renderMealsList(filter) {
+      const container = document.getElementById('meals-grid');
+      container.innerHTML = '';
+
+      const filtered = filter === 'all' ? signatureMeals : signatureMeals.filter(m => m.category === filter);
+
+      filtered.forEach(meal => {
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-3xl overflow-hidden border border-gray-200/90 shadow-sm flex flex-col hover:shadow-md transition-all duration-300';
+        card.innerHTML = `
+          <div class="aspect-[4/3] bg-gray-100 relative overflow-hidden group">
+            <img src="${meal.image}" alt="${meal.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <span class="absolute top-3 right-3 ${meal.badgeColor} px-2.5 py-1 rounded-full text-xs font-bold shadow-xs">
+              ${meal.categoryLabel}
+            </span>
+          </div>
+          <div class="p-5 flex flex-col justify-between flex-grow">
+            <div>
+              <h3 class="font-bold text-gray-800 text-base mb-1.5 leading-snug">${meal.title}</h3>
+              <p class="text-xs text-gray-500 leading-relaxed mb-4">${meal.desc}</p>
+
+              <div class="bg-amber-50/70 border border-amber-200/50 rounded-xl p-2.5 text-[11px] text-amber-900 mb-4">
+                <strong>דגש הכנה:</strong> ${meal.specialNote}
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-gray-150">
+              <button onclick="shareMealDirectToWhatsapp('${meal.id}')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-sm flex items-center justify-center gap-1.5 transition active:scale-95">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>שלחי להורים בוואטסאפ 📲</span>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    function filterMeals(category) {
+      document.querySelectorAll('.meal-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.className = 'meal-filter-btn px-3 py-1.5 rounded-xl bg-white text-gray-800 shadow-xs';
+        } else {
+          btn.className = 'meal-filter-btn px-3 py-1.5 rounded-xl text-gray-600 hover:text-gray-900';
+        }
+      });
+      renderMealsList(category);
+    }
+
+    function updatePlateBuilder() {
+      const protein = document.querySelector('input[name="builder_protein"]:checked').value;
+      const carb = document.querySelector('input[name="builder_carb"]:checked').value;
+
+      document.getElementById('builder-preview-protein').innerText = protein;
+      document.getElementById('builder-preview-carb').innerText = carb;
+    }
+
+    function shareMealDirectToWhatsapp(mealId) {
+      const meal = signatureMeals.find(m => m.id === mealId);
+      if (!meal) return;
+
+      const ingText = meal.ingredients.map(i => `• ${i}`).join('\n');
+      const text = `היי! ❤️
+ממש בא לי לאכול היום:
+🍽️ *${meal.title}*
+
+🛒 *מצרכים:*
+${ingText}
+
+⚠️ *הערה סופר חשובה לגבי ההכנה:*
+${meal.specialNote}
+בלי שום תבלינים נוספים, בלי פלפל שחור, בלי עשבי תיבול, בלי שומשום ובלי גבינה מומסת בבקשה! 🙏
+
+תודה רבה! 🥰`;
+
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function shareCurrentMealToWhatsapp() {
+      if (currentSelectedMeal) {
+        shareMealDirectToWhatsapp(currentSelectedMeal.id);
+      }
+    }
+
+    function shareBuiltPlateToWhatsapp() {
+      const protein = document.querySelector('input[name="builder_protein"]:checked').value;
+      const carb = document.querySelector('input[name="builder_carb"]:checked').value;
+
+      const text = `היי! ❤️
+ממש בא לי להרכיב ארוחה טעימה היום:
+🍽️ *השילוב שלי:*
+• חלבון: ${protein}
+• פחמימה: ${carb}
+• לצד: מלפפון פריך עם מלח גס 🥒
+
+⚠️ *הערה סופר חשובה להכנה:*
+בלי שום תבלינים חוץ ממלח! בלי פלפל שחור, בלי עשבי תיבול, בלי שומשום ובלי גבינה מומסת בבקשה! 🙏
+
+תודה רבה מראש! 🥰`;
+
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function renderPantryLists() {
+      renderPantryCategory('pantry-proteins-list', pantryData.proteins, 'prot');
+      renderPantryCategory('pantry-carbs-list', pantryData.carbs, 'carb');
+      renderPantryCategory('pantry-veggies-list', pantryData.veggies, 'veg');
+    }
+
+    function renderPantryCategory(containerId, items, prefix) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      items.forEach((item, idx) => {
+        const key = `pantry_${prefix}_${idx}`;
+        const isChecked = localStorage.getItem(key) === 'true';
+        const div = document.createElement('label');
+        div.className = 'flex items-center gap-2.5 p-2 rounded-xl hover:bg-gray-50 cursor-pointer transition';
+        div.innerHTML = `
+          <input type="checkbox" id="${key}" ${isChecked ? 'checked' : ''} onchange="togglePantryCheck('${key}', this.checked)" class="rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+          <span class="text-xs sm:text-sm text-gray-700 font-medium ${isChecked ? 'line-through text-gray-400' : ''}">${item}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function togglePantryCheck(key, checked) {
+      localStorage.setItem(key, checked);
+      renderPantryLists();
+    }
+
+    function updateDilutionSimulator(val) {
+      const syrupPct = parseInt(val);
+      const waterPct = 100 - syrupPct;
+
+      document.getElementById('cup-syrup').style.height = syrupPct + '%';
+      document.getElementById('cup-water').style.height = waterPct + '%';
+      document.getElementById('syrup-pct').innerText = syrupPct + '%';
+      document.getElementById('water-pct').innerText = waterPct + '%';
+
+      const feedback = document.getElementById('slider-feedback');
+      const badge = document.getElementById('slider-badge');
+
+      if (syrupPct <= 20) {
+        badge.innerText = 'קליל ודל סוכר 💧';
+        badge.className = 'px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold';
+        feedback.innerHTML = '💧 <strong>דילול מרענן במיוחד:</strong> מעט תרכיז, המון מים קרים וקרח. מרווה בטירוף, לא מעמיס סוכר בכלל, ועוזר לפנים להישאר רזות ולא נפוחות!';
+      } else if (syrupPct <= 30) {
+        badge.innerText = 'איזון מושלם ✨';
+        badge.className = 'px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold';
+        feedback.innerHTML = '✨ <strong>האיזון המושלם:</strong> רבע כוס תרכיז, שלושת-רבעי מים ומלא קרח. הטעם מתוק ומרענן בדיוק כמו שאת אוהבת, אבל הגוף שלך מקבל חצי מכמות הסוכר!';
+      } else {
+        badge.innerText = 'מתוק ועמוס סוכר ⚠️';
+        badge.className = 'px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold';
+        feedback.innerHTML = '⚠️ <strong>עודף סוכר:</strong> יותר מדי תרכיז גורם לאגירת נוזלים (נפיחות בפנים) ולצניחת סוכר מהירה שמחזירה את החשק למתוק. נסי להוסיף עוד מים וקרח!';
+      }
+    }
+
+    const breathePhrases = ['שאיפה...', 'החזקת אוויר...', 'נשיפה איטית...', 'מנוחה...'];
+    let breatheIdx = 0;
+    setInterval(() => {
+      breatheIdx = (breatheIdx + 1) % breathePhrases.length;
+      const elem = document.getElementById('breathe-text');
+      if (elem) elem.innerText = breathePhrases[breatheIdx];
+    }, 4000);
+
+    function toggleThoughtCard(id) {
+      const content = document.getElementById(`thought-content-${id}`);
+      const icon = document.getElementById(`thought-icon-${id}`);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
+</body>
+</html>
