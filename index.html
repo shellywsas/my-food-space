@@ -1,164 +1,227 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" class="overflow-x-hidden">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>הפינה הבטוחה שלי 🌿 | המדריך האישי שלי לאוכל ושקט</title>
-  <!-- Google Fonts: Rubik & Heebo -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הפינה הבטוחה שלי 🌿 | המאכלים שאני אוהבת</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
+  <!-- Google Fonts: Assistant & Rubik -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Heebo', 'Rubik', 'sans-serif'],
-          },
-          colors: {
-            safe: {
-              cream: '#FDFBF7',
-              sand: '#F7F3EB',
-              sage: '#8FA89B',
-              sageDark: '#627D70',
-              softPink: '#F4DFDF',
-              lavender: '#E5E0F0',
-              peach: '#FCE7D2',
-              dark: '#2D3748',
-              muted: '#718096'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
   <style>
-    html, body {
-      overflow-x: hidden;
-      width: 100%;
-      background-color: #FDFBF7;
-      color: #2D3748;
-      font-family: 'Heebo', sans-serif;
+    body {
+      font-family: 'Assistant', sans-serif;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Rubik', sans-serif;
     }
     .glass-card {
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(226, 232, 240, 0.9);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tab-active {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: white !important;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
     }
     .breathe-circle {
-      animation: breathe 16s ease-in-out infinite;
+      animation: breathe 12s infinite ease-in-out;
     }
     @keyframes breathe {
       0%, 100% { transform: scale(1); }
-      25% { transform: scale(1.45); }
-      50% { transform: scale(1.45); }
-      75% { transform: scale(1); }
+      33% { transform: scale(1.35); }
+      66% { transform: scale(1.35); }
     }
-    .tab-active {
-      background-color: #8FA89B !important;
-      color: #FFFFFF !important;
-      border-color: #8FA89B !important;
-      box-shadow: 0 4px 12px rgba(143, 168, 155, 0.35);
+    .plate-realistic {
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f8f6f0 55%, #eae6dc 85%, #d8d2c4 100%);
+      box-shadow: 
+        inset 0 4px 15px rgba(255, 255, 255, 0.9),
+        inset 0 -6px 20px rgba(0, 0, 0, 0.08),
+        0 12px 35px rgba(0, 0, 0, 0.12),
+        0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .plate-inner-rim {
+      box-shadow: 
+        inset 0 3px 10px rgba(0, 0, 0, 0.06),
+        0 2px 5px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Dark Mode (שקט נפשי / לילה) */
+    body.night-mode {
+      background-color: #0b0f19 !important;
+      color: #e2e8f0 !important;
+    }
+    body.night-mode .glass-card,
+    body.night-mode .bg-white {
+      background-color: #172033 !important;
+      border-color: #27354f !important;
+      color: #e2e8f0 !important;
+    }
+    body.night-mode .text-gray-800,
+    body.night-mode .text-gray-700 {
+      color: #f1f5f9 !important;
+    }
+    body.night-mode .text-gray-600,
+    body.night-mode .text-gray-500 {
+      color: #94a3b8 !important;
+    }
+    body.night-mode .border-gray-200,
+    body.night-mode .border-gray-150 {
+      border-color: #26334d !important;
+    }
+    body.night-mode header {
+      background-color: rgba(15, 23, 42, 0.92) !important;
+      border-color: #26334d !important;
+    }
+    body.night-mode .bg-gray-100 {
+      background-color: #1e293b !important;
+    }
+    body.night-mode .bg-emerald-50,
+    body.night-mode .bg-emerald-50\/40 {
+      background-color: #0d2820 !important;
+    }
+    body.night-mode .plate-realistic {
+      background: radial-gradient(circle at 35% 35%, #2a3447 0%, #1e293b 55%, #151e2e 85%, #0f172a 100%);
+      box-shadow: 
+        inset 0 4px 15px rgba(255, 255, 255, 0.05),
+        inset 0 -6px 20px rgba(0, 0, 0, 0.5),
+        0 14px 40px rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
-<body class="min-h-screen bg-safe-cream flex flex-col antialiased selection:bg-safe-sage selection:text-white overflow-x-hidden">
+<body class="bg-stone-50/70 text-gray-800 antialiased min-h-screen flex flex-col transition-colors duration-300">
 
-  <!-- Top Announcement Bar -->
-  <header class="bg-gradient-to-r from-emerald-100/70 via-teal-50/80 to-purple-100/70 border-b border-emerald-100 py-2.5 px-4 text-center text-xs sm:text-sm font-medium text-emerald-900 shadow-xs">
-    <div class="max-w-5xl mx-auto flex items-center justify-center gap-2">
-      <i data-lucide="shield-check" class="w-4 h-4 text-emerald-700 shrink-0"></i>
-      <span>חוק הברזל: <strong>רק מלח וקינמון</strong> | בלי שומשום | בלי ירוקים ועשבי תיבול | אפס שיפוטיות ✨</span>
+  <!-- ========================================== -->
+  <!-- TOP HEADER & BRANDING -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-xs transition-colors">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl shadow-xs">
+          🌿
+        </span>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-gray-800 tracking-tight leading-none flex items-center gap-2">
+            <span>הפינה הבטוחה שלי</span>
+            <span class="px-2 py-0.5 text-[10px] rounded-full bg-emerald-100 text-emerald-800 font-semibold">100% לטעמי</span>
+          </h1>
+          <p class="text-xs text-gray-500 mt-0.5">בלי לחץ, בלי תבלינים, רק מאכלים שאני באמת אוהבת ✨</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Night Mode / Calm Toggle -->
+        <button id="night-mode-toggle" onclick="toggleNightMode()" class="px-3 py-2 rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition flex items-center gap-1.5 shadow-xs" title="מצב שקט נפשי & לילה">
+          <i id="night-icon" data-lucide="moon" class="w-4 h-4 text-indigo-500"></i>
+          <span id="night-label" class="hidden sm:inline">מצב לילה</span>
+        </button>
+
+        <!-- Settings Button -->
+        <button onclick="openSettingsModal()" class="p-2 sm:px-3 sm:py-2 rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold transition flex items-center gap-1.5 shadow-xs">
+          <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-600"></i>
+          <span class="hidden sm:inline">הוסיפי מאכל</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Main Hero & Navigation Header -->
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-5 pb-3 w-full">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-gray-200/60 pb-5">
-      <div class="text-center sm:text-right">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold mb-1">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          המרחב האישי המוגן שלי
+  <!-- ========================================== -->
+  <!-- LATE-NIGHT SOOTHING BANNER (Idea 2) -->
+  <!-- ========================================== -->
+  <div id="night-banner" class="hidden bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 text-white px-4 py-3.5 border-b border-indigo-800/50 shadow-md">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+      <div class="flex items-start gap-3">
+        <span class="p-2 rounded-xl bg-indigo-800/60 text-amber-300 text-lg shrink-0">🌙</span>
+        <div>
+          <strong class="font-bold text-amber-300 text-sm block mb-0.5">שקט נפשי לשעות הלילה המאוחרות:</strong>
+          <span class="text-indigo-200 leading-relaxed block">
+            השעה מאוחרת אחרי יום של לימודים ועומס? הגוף מחפש נחמה? זה <strong>לא</strong> כי אין לך כוח רצון — הגוף פשוט תשוש. 
+            שתי כוס מים קרים עם קרח. אם את רעבה באמת — קחי מעדן חלבון, פיתה, או מלפפון עם מלח. שום דבר לא נהרס!
+          </span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-800 tracking-tight">הפינה הבטוחה שלי 🌿</h1>
-        <p class="text-xs sm:text-sm text-gray-500 mt-0.5">כל מה שאת באמת אוהבת, בדיוק כמו שאת אוהבת, בלי מלחמות בראש.</p>
       </div>
-
-      <!-- Quick Action / SOS & Settings Buttons -->
-      <div class="flex items-center gap-2">
-        <button onclick="openSettingsModal()" class="flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-white hover:bg-gray-100 border border-gray-250 text-gray-700 font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95">
-          <i data-lucide="settings" class="w-4 h-4 text-gray-600"></i>
-          <span>הגדרות & הוספת מאכל</span>
-        </button>
-        <button onclick="switchTab('sos')" class="flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-800 font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95">
-          <i data-lucide="heart" class="w-4 h-4 text-purple-600"></i>
-          <span>לחוצה? (SOS)</span>
-        </button>
-      </div>
+      <button onclick="switchTab('sos')" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shrink-0 shadow flex items-center gap-1.5 transition active:scale-95">
+        <i data-lucide="heart" class="w-3.5 h-3.5 text-pink-300"></i>
+        <span>קחי נשימה מרגיעה (60 שנ')</span>
+      </button>
     </div>
-
-    <!-- Navigation Tabs: Responsive Grid (NO HORIZONTAL SCROLL) -->
-    <nav class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-4 pb-2 w-full text-xs sm:text-sm font-medium">
-      <button onclick="switchTab('shuffle')" id="tab-btn-shuffle" class="tab-btn p-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center justify-center gap-1.5 text-center tab-active">
-        <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-        <span class="truncate">מה בא לי? 🎲</span>
-      </button>
-      <button onclick="switchTab('builder')" id="tab-btn-builder" class="tab-btn p-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center justify-center gap-1.5 text-center">
-        <i data-lucide="utensils" class="w-4 h-4 text-amber-600 shrink-0"></i>
-        <span class="truncate">הרכבת צלחת 🍽️</span>
-      </button>
-      <button onclick="switchTab('meals')" id="tab-btn-meals" class="tab-btn p-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center justify-center gap-1.5 text-center">
-        <i data-lucide="book-open" class="w-4 h-4 text-sky-600 shrink-0"></i>
-        <span class="truncate">הארוחות שלי 📖</span>
-      </button>
-      <button onclick="switchTab('groceries')" id="tab-btn-groceries" class="tab-btn p-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center justify-center gap-1.5 text-center">
-        <i data-lucide="shopping-cart" class="w-4 h-4 text-indigo-600 shrink-0"></i>
-        <span class="truncate">מוצרים וקניות 🛒</span>
-      </button>
-      <button onclick="switchTab('drinks')" id="tab-btn-drinks" class="tab-btn p-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center justify-center gap-1.5 text-center">
-        <i data-lucide="droplet" class="w-4 h-4 text-teal-600 shrink-0"></i>
-        <span class="truncate">ויטמינצ'יק & שתייה 💧</span>
-      </button>
-      <button onclick="switchTab('sos')" id="tab-btn-sos" class="tab-btn p-2.5 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all flex items-center justify-center gap-1.5 text-center">
-        <i data-lucide="wind" class="w-4 h-4 text-purple-600 shrink-0"></i>
-        <span class="truncate">רגע שקט 🫁</span>
-      </button>
-    </nav>
   </div>
 
-  <!-- Main Content Container -->
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 flex-grow pb-12 w-full">
+  <!-- ========================================== -->
+  <!-- CATEGORY / NAVIGATION TABS -->
+  <!-- ========================================== -->
+  <nav class="sticky top-[61px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-200/80 shadow-xs">
+    <div class="max-w-5xl mx-auto px-2 sm:px-4 py-2 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar">
+      <button onclick="switchTab('shuffle')" id="tab-btn-shuffle" class="tab-btn tab-active px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-1.5 shrink-0 transition-all">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>הגרלת ארוחה 🎲</span>
+      </button>
+      <button onclick="switchTab('builder')" id="tab-btn-builder" class="tab-btn px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 shrink-0 transition-all">
+        <i data-lucide="utensils" class="w-4 h-4"></i>
+        <span>הרכבת צלחת ויזואלית 🍽️</span>
+      </button>
+      <button onclick="switchTab('meals')" id="tab-btn-meals" class="tab-btn px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 shrink-0 transition-all">
+        <i data-lucide="book-open" class="w-4 h-4"></i>
+        <span>כל המאכלים (22) 📖</span>
+      </button>
+      <button onclick="switchTab('groceries')" id="tab-btn-groceries" class="tab-btn px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 shrink-0 transition-all">
+        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+        <span>מוצרים בסופר 🛒</span>
+      </button>
+      <button onclick="switchTab('drinks')" id="tab-btn-drinks" class="tab-btn px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 shrink-0 transition-all">
+        <i data-lucide="cup-soda" class="w-4 h-4"></i>
+        <span>ויטמינצ'יק & שתייה 💧</span>
+      </button>
+      <button onclick="switchTab('sos')" id="tab-btn-sos" class="tab-btn px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold text-purple-700 hover:text-purple-900 bg-purple-50 flex items-center gap-1.5 shrink-0 transition-all">
+        <i data-lucide="heart" class="w-4 h-4 text-purple-600"></i>
+        <span>רגע של שקט 🫁</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- MAIN CONTAINER -->
+  <!-- ========================================== -->
+  <main class="max-w-5xl w-full mx-auto px-4 py-6 flex-grow">
 
     <!-- ========================================== -->
-    <!-- TAB 1: SHUFFLE & FAST MEAL CHOOSER -->
+    <!-- TAB 1: RANDOM MEAL GENERATOR -->
     <!-- ========================================== -->
-    <section id="tab-content-shuffle" class="tab-section block">
-      <div class="bg-gradient-to-br from-emerald-50/70 to-teal-50/50 rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-sm text-center relative overflow-hidden mb-6">
-        <div class="max-w-xl mx-auto relative z-10">
-          <span class="inline-block p-3 bg-white rounded-2xl shadow-sm text-emerald-800 mb-2">
-            <i data-lucide="dice-5" class="w-6 h-6 text-emerald-600"></i>
+    <section id="tab-content-shuffle" class="tab-section">
+      <!-- Compassionate Intro Banner -->
+      <div class="glass-card rounded-3xl p-5 sm:p-6 mb-6 border border-emerald-100 shadow-sm relative overflow-hidden">
+        <div class="relative z-10 text-center max-w-xl mx-auto">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-2">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+            אזור מוגן: רק מלח וקינמון, בלי ירוקים, בלי שומשום
           </span>
-          <h2 class="text-xl sm:text-2xl font-bold text-gray-800">עייפה? אין כוח לחשוב מה לאכול?</h2>
-          <p class="text-xs sm:text-sm text-gray-600 mt-1 mb-5">
-            במקום לעמוד מול המקרר שעה, לחיצה אחת והאתר יבחר עבורך ארוחה מתוך הרשימה המדויקת שלך!
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-1.5">המוח עייף ואין כוח להחליט מה לאכול?</h2>
+          <p class="text-xs sm:text-sm text-gray-600 mb-4">
+            במקום להסתכל שעות במקרר או ללכת לממתקים — לחצי על הכפתור וקבלי הצעה מדויקת, משביעה ובטוחה שאת אוהבת:
           </p>
 
           <div class="flex flex-wrap justify-center gap-2.5">
             <button onclick="pickRandomMeal('all')" class="px-5 py-3 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-md transition-all flex items-center gap-2 active:scale-95">
               <i data-lucide="shuffle" class="w-4 h-4"></i>
-              <span>תגריל לי ארוחה עכשיו!</span>
+              <span>תגרילי לי ארוחה עכשיו! 🎲</span>
+            </button>
+            <button onclick="pickRandomMeal('lunch')" class="px-4 py-3 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95">
+              <span>🍲 צהריים חם ומנחם</span>
             </button>
             <button onclick="pickRandomMeal('quick')" class="px-4 py-3 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95">
               <span>⚡ סופר מהיר (בלי לבשל)</span>
             </button>
             <button onclick="pickRandomMeal('sweet')" class="px-4 py-3 rounded-2xl bg-pink-100/70 hover:bg-pink-100 border border-pink-200 text-pink-900 font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95">
-              <span>🍫 בא לי מתוק ומפנק</span>
+              <span>🍫 מתוק ומפנק</span>
             </button>
           </div>
         </div>
@@ -205,153 +268,166 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 2: MIX & MATCH PLATE BUILDER -->
+    <!-- TAB 2: VISUAL PLATE BUILDER (Idea 1) -->
     <!-- ========================================== -->
     <section id="tab-content-builder" class="tab-section hidden">
       <div class="mb-5">
-        <h2 class="text-xl sm:text-2xl font-bold text-gray-800">הרכבת צלחת משביעה (Mix & Match) 🍽️</h2>
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800">הרכבת צלחת ויזואלית (Mix & Match) 🍽️</h2>
         <p class="text-xs sm:text-sm text-gray-600 mt-1">
-          החוק הפשוט שעוצר בולמוסים: <strong>חלבון 1 + פחמימה 1 + מלפפון עם מלח</strong>.
+          הנוסחה הפשוטה שעוצרת בולמוסים ומורידה נפיחות: <strong>חלבון 1 + פחמימה 1 + מלפפון פריך עם מלח</strong>.
+          בחרי את המרכיבים ותראי את הצלחת מורכבת מול העיניים!
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        <!-- Step 1: Pick Protein -->
-        <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm flex flex-col">
-          <div class="flex items-center gap-2 text-emerald-800 font-bold mb-3">
-            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">1</span>
-            <h3 class="text-sm sm:text-base">בחרי חלבון (בסיס השובע):</h3>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Controls Column (7 Cols on LG) -->
+        <div class="lg:col-span-7 space-y-5">
+          <!-- Step 1: Pick Protein -->
+          <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm">
+            <div class="flex items-center gap-2 text-emerald-800 font-bold mb-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">1</span>
+              <h3 class="text-sm sm:text-base">בחרי חלבון (בסיס השובע העמוק):</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="schnitzel" data-title="שניצל ביתי פריך וזהוב" checked onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🍗 שניצל זהוב ופריך</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="meatballs" data-title="כדורי בשר ברוטב עגבניות חלק" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🧆 כדורי בשר ברוטב חלק</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="bolognese" data-title="רוטב בולונז בקר חלק (בלי ירוקים)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🍝 בולונז בקר חלק</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="burger" data-title="קציצת המבורגר נקייה (בלי גבינה)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🍔 קציצת המבורגר נקייה</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="moms_chicken" data-title="חתיכות עוף צלוי בתנור (בלי ירוקים)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🍗 חתיכות עוף בתנור</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="eggs" data-title="2 ביצי עין / חביתה / קשות (רק מלח)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🍳 2 ביצי עין / חביתה</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="hotdogs" data-title="נקניקיות חמות עם קטשופ" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🌭 נקניקיות חמות</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="deli_toast" data-title="נקניק חזה בקר איכותי" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🥩 נקניק חזה בקר</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="cheese_crackers" data-title="משולשי גבינה (בנפרד, לא מותכים!)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🧀 2-3 משולשי גבינה</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_protein" value="liver_toast" data-title="ממרח כבד חלק ונקי" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
+                <span class="font-medium text-gray-800">🥪 ממרח כבד חלק</span>
+              </label>
+            </div>
           </div>
-          <div class="space-y-2 flex-grow text-xs sm:text-sm">
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="שניצל ביתי פריך וזהוב" checked onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">שניצל ביתי פריך וזהוב</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="כדורי בשר ברוטב עגבניות חלק (בלי חתיכות וירוקים)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">כדורי בשר ברוטב עגבניות חלק</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="בולונז בקר ברוטב עגבניות חלק" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">רוטב בולונז בקר חלק (בלי עשבי תיבול)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="קציצת המבורגר בקר נקייה (בלי גבינה)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">קציצת המבורגר בקר נקייה</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="2 ביצי עין / חביתה / קשות (רק מלח)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">2 ביצים (עין / חביתה / קשות - רק מלח)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="עוף חתוך צלוי בתנור (בלי ירוקים ועשבים)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">חתיכות עוף צלוי בתנור (ללא עשבי תיבול)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="ממרח כבד חלק (בלי שום ירוק)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">ממרח כבד חלק (פצצת ברזל!)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="משולשי גבינה (בנפרד, לא מומסים)" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">2 משולשי גבינה רכים מהעטיפה</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="נקניק חזה בקר / סרוולט קלאסי" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">נקניק חזה בקר / סרוולט קלאסי</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-emerald-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_protein" value="נקניקיות חמות" onchange="updatePlateBuilder()" class="text-emerald-600 focus:ring-emerald-500">
-              <span class="font-medium text-gray-800">נקניקיות חמות</span>
-            </label>
+
+          <!-- Step 2: Pick Carb -->
+          <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm">
+            <div class="flex items-center gap-2 text-amber-800 font-bold mb-3">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs">2</span>
+              <h3 class="text-sm sm:text-base">בחרי פחמימה (נחמה ואנרגיה למוח):</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="schnitzel" data-title="פסטה חמה ונקייה (ללא פלפל שחור!)" checked onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🍝 פסטה נקייה עם מלח</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="couscous" data-title="קוסקוס רך (עם מלח או קטשופ)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🥣 קוסקוס רך וחם</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="mashed_potatoes" data-title="פירה תפוחי אדמה קטיפתי (רק מלח)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🥔 פירה תפוחי אדמה חלק</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="boiled_potatoes" data-title="תפוחי אדמה מבושלים עם מלח גס" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🥔 תפוחי אדמה מבושלים</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="burger" data-title="צ'יפס זהוב פריך (רק מלח!)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🍟 צ'יפס זהוב (רק מלח)</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="latkes" data-title="לביבות תפוחי אדמה קריספיות" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🥔 לביבות תפוחי אדמה</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="pita_omelet" data-title="פיתה טרייה וחמה" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🥙 פיתה טרייה ורכה</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl border border-gray-200 hover:bg-amber-50/50 cursor-pointer transition">
+                <input type="radio" name="builder_carb" value="canned_corn" data-title="קערת תירס מתוק בשימורים" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
+                <span class="font-medium text-gray-800">🌽 תירס מתוק בשימורים</span>
+              </label>
+            </div>
           </div>
         </div>
 
-        <!-- Step 2: Pick Carb -->
-        <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm flex flex-col">
-          <div class="flex items-center gap-2 text-amber-800 font-bold mb-3">
-            <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs">2</span>
-            <h3 class="text-sm sm:text-base">בחרי פחמימה (אנרגיה ונחמה):</h3>
+        <!-- The Visual Ceramic Plate (5 Cols on LG) -->
+        <div class="lg:col-span-5 bg-white rounded-3xl p-5 sm:p-6 border-2 border-emerald-200 shadow-lg flex flex-col items-center">
+          <div class="w-full flex items-center justify-between border-b border-gray-150 pb-2.5 mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+              <span>הצלחת הויזואלית שלך</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            </span>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">100% לטעמי ✨</span>
           </div>
-          <div class="space-y-2 flex-grow text-xs sm:text-sm">
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="פסטה חמה ונקייה" checked onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">פסטה חמה ונקייה (בלי תבלינים!)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="קוסקוס רך עם מלח או קטשופ" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">קוסקוס רך (עם מלח או קטשופ)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="פירה תפוחי אדמה קטיפתי (רק מלח)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">פירה תפוחי אדמה חלק וקרמי</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="צ'יפס זהוב (רק עם מלח)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">צ'יפס זהוב פריך (מלח בלבד!)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="קוביות תפוחי אדמה אפויות בתנור עם שמן זית ומלח" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">קוביות תפוחי אדמה שחומות בתנור</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="פיתה טרייה" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">פיתה טרייה ורכה</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="לחמנייה חלקה (בלי שומשום בכלל)" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">לחמנייה חלקה (ללא שומשום!)</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="לביבות תפוחי אדמה חמות ופריכות" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">לביבות תפוחי אדמה חמות</span>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-gray-150 hover:bg-amber-50/50 cursor-pointer transition">
-              <input type="radio" name="builder_carb" value="אורז לבן או בורגול עם מלח" onchange="updatePlateBuilder()" class="text-amber-600 focus:ring-amber-500">
-              <span class="font-medium text-gray-800">אורז לבן / בורגול (רק עם מלח)</span>
-            </label>
-          </div>
-        </div>
 
-        <!-- Step 3: Result & Preview Card -->
-        <div class="bg-gradient-to-b from-white to-emerald-50/40 rounded-3xl p-5 border-2 border-emerald-200 shadow-md flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between border-b border-gray-150 pb-3 mb-3">
-              <span class="text-xs font-bold uppercase tracking-wider text-emerald-800">הצלחת שהרכבת הרגע ✨</span>
-              <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-semibold">100% לטעמך</span>
-            </div>
+          <!-- The Realistic Round Plate Simulation -->
+          <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full plate-realistic border-8 border-stone-200/70 p-3 flex flex-col justify-between overflow-hidden shadow-2xl transition-all duration-300 my-2">
+            <!-- Plate Rim Inner Ring -->
+            <div class="absolute inset-2 rounded-full border border-stone-300/40 pointer-events-none plate-inner-rim"></div>
 
-            <div class="space-y-2.5 mb-5 text-xs sm:text-sm">
-              <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-gray-100 shadow-xs">
-                <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0"></i>
-                <div>
-                  <span class="text-[11px] text-gray-400 block font-medium">חלבון:</span>
-                  <span id="builder-preview-protein" class="font-bold text-gray-800">שניצל ביתי פריך וזהוב</span>
+            <!-- Top Row: Protein (Left) & Carb (Right) -->
+            <div class="grid grid-cols-2 gap-2 h-1/2 relative z-10">
+              <!-- Protein Zone -->
+              <div class="rounded-2xl overflow-hidden relative shadow-sm border border-black/10 group bg-stone-100">
+                <img id="plate-protein-img" src="images/schnitzel.jpg" alt="חלבון" class="w-full h-full object-cover transition-all duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-1.5">
+                  <span id="plate-protein-label" class="text-[10px] sm:text-xs font-bold text-white truncate w-full text-center">שניצל זהוב</span>
                 </div>
               </div>
-
-              <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-gray-100 shadow-xs">
-                <i data-lucide="check-circle" class="w-5 h-5 text-amber-600 shrink-0"></i>
-                <div>
-                  <span class="text-[11px] text-gray-400 block font-medium">פחמימה:</span>
-                  <span id="builder-preview-carb" class="font-bold text-gray-800">פסטה חמה ונקייה</span>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-gray-100 shadow-xs">
-                <i data-lucide="check-circle" class="w-5 h-5 text-teal-600 shrink-0"></i>
-                <div>
-                  <span class="text-[11px] text-gray-400 block font-medium">קראנץ' חובה:</span>
-                  <span class="font-bold text-gray-800">מלפפון פריך עם מלח גס 🥒</span>
+              <!-- Carb Zone -->
+              <div class="rounded-2xl overflow-hidden relative shadow-sm border border-black/10 group bg-stone-100">
+                <img id="plate-carb-img" src="images/schnitzel.jpg" alt="פחמימה" class="w-full h-full object-cover transition-all duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-1.5">
+                  <span id="plate-carb-label" class="text-[10px] sm:text-xs font-bold text-white truncate w-full text-center">פסטה נקייה</span>
                 </div>
               </div>
             </div>
 
-            <div class="bg-emerald-50 rounded-2xl p-3 border border-emerald-100 text-xs text-emerald-900 leading-relaxed mb-4">
-              💡 <strong>למה זה עובד?</strong> חלבון אמיתי לשובע ממושך + פחמימה מנחמת שמרגיעה את המוח + קראנץ' מלוח בלי שום תבלינים שמציקים לך.
+            <!-- Bottom Row: Crunch (Cucumber & Salt) -->
+            <div class="h-[45%] relative z-10 mt-1.5 rounded-2xl overflow-hidden border border-black/10 shadow-sm bg-emerald-50/70">
+              <img src="images/eggs.jpg" alt="מלפפונים עם מלח" class="w-full h-full object-cover object-bottom">
+              <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-950/20 to-transparent flex items-end justify-between p-2">
+                <span class="text-[11px] sm:text-xs font-bold text-white flex items-center gap-1">
+                  <span>מלפפון פריך עם מלח גס 🥒</span>
+                </span>
+                <span class="px-1.5 py-0.5 rounded-full bg-emerald-400 text-emerald-950 text-[10px] font-extrabold">קראנץ' חובה</span>
+              </div>
             </div>
           </div>
 
-          <button onclick="shareBuiltPlateToWhatsapp()" class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
+          <!-- Description Box -->
+          <div class="w-full mt-4 bg-emerald-50/70 rounded-2xl p-3 border border-emerald-100 text-xs text-emerald-900 leading-relaxed">
+            💡 <strong>סוד השובע והרוגע:</strong> חלבון יציב לשובע עמוק + פחמימה חמה שמרגיעה את המוח + קראנץ' מלוח בלי שום תבלינים שמציקים לך.
+          </div>
+
+          <!-- WhatsApp Share Button -->
+          <button onclick="shareBuiltPlateToWhatsapp()" class="w-full mt-4 py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
             <i data-lucide="message-circle" class="w-4 h-4"></i>
             <span>שלחי את הצלחת הזו להורים בוואטסאפ 📲</span>
           </button>
@@ -360,16 +436,16 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 3: RECOMMENDED MEALS & WHATSAPP SHARING -->
+    <!-- TAB 3: ALL 22 RECOMMENDED DISHES -->
     <!-- ========================================== -->
     <section id="tab-content-meals" class="tab-section hidden">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
         <div>
-          <h2 class="text-xl sm:text-2xl font-bold text-gray-800">הארוחות המומלצות שלך 📖</h2>
-          <p class="text-xs sm:text-sm text-gray-600 mt-0.5">כל הארוחות מותאמות בדיוק לחוקים שלך (רק מלח וקינמון, בלי ירוקים, בלי שומשום).</p>
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-800">המאכלים המדויקים שלך (22 מנות) 📖</h2>
+          <p class="text-xs sm:text-sm text-gray-600 mt-0.5">כל מנה נבדקה ב-100%: רק מלח וקינמון, בלי פלפל שחור, בלי ירוקים ועשבי תיבול, בלי שומשום.</p>
         </div>
-        <div class="flex flex-wrap gap-1 rounded-2xl bg-gray-100 p-1 text-xs font-semibold">
-          <button onclick="filterMeals('all')" class="meal-filter-btn px-3 py-1.5 rounded-xl bg-white text-gray-800 shadow-xs" data-filter="all">הכל</button>
+        <div class="flex flex-wrap gap-1 rounded-2xl bg-gray-100 p-1 text-xs font-semibold shrink-0">
+          <button onclick="filterMeals('all')" class="meal-filter-btn px-3 py-1.5 rounded-xl bg-white text-gray-800 shadow-xs" data-filter="all">הכל (22)</button>
           <button onclick="filterMeals('lunch')" class="meal-filter-btn px-3 py-1.5 rounded-xl text-gray-600 hover:text-gray-900" data-filter="lunch">צהריים חם</button>
           <button onclick="filterMeals('quick')" class="meal-filter-btn px-3 py-1.5 rounded-xl text-gray-600 hover:text-gray-900" data-filter="quick">קל ומהיר</button>
           <button onclick="filterMeals('sweet')" class="meal-filter-btn px-3 py-1.5 rounded-xl text-gray-600 hover:text-gray-900" data-filter="sweet">מתוק ומפנק</button>
@@ -378,7 +454,7 @@
 
       <!-- Meals Grid -->
       <div id="meals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <!-- Rendered by JS -->
+        <!-- Rendered by JavaScript -->
       </div>
     </section>
 
@@ -389,7 +465,7 @@
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
         <div>
           <h2 class="text-xl sm:text-2xl font-bold text-gray-800">המוצרים המדויקים שלי (רשימת קניות להורים) 🛒</h2>
-          <p class="text-xs sm:text-sm text-gray-600 mt-0.5">בדיוק מה לקנות בסופר כדי שלא יקנו בטעות משהו עם שומשום, ירקות או עשבי תיבול.</p>
+          <p class="text-xs sm:text-sm text-gray-600 mt-0.5">בדיוק מה לקנות בסופר כדי שלא יקנו בטעות משהו עם שומשום, עשבי תיבול או פלפל שחור.</p>
         </div>
         <button onclick="shareGroceriesToWhatsapp()" class="px-4 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow transition-all flex items-center justify-center gap-2 active:scale-95 shrink-0">
           <i data-lucide="message-circle" class="w-4 h-4"></i>
@@ -553,7 +629,7 @@
 
         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-gray-200 shadow-sm hover:border-purple-300 transition cursor-pointer" onclick="toggleThoughtCard(3)">
           <div class="flex items-center justify-between mb-1.5">
-            <span class="text-xs sm:text-sm font-bold text-gray-800">"נמאס לי מפיזיקה, מתמטיקה ועומס כיתה י\"ב"</span>
+            <span class="text-xs sm:text-sm font-bold text-gray-800">"נמאס לי מפיזיקה, מתמטיקה ועומס כיתה י"ב"</span>
             <i id="thought-icon-3" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition shrink-0"></i>
           </div>
           <div id="thought-content-3" class="hidden text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3 mt-2">
@@ -568,7 +644,7 @@
   <!-- ========================================== -->
   <!-- SETTINGS & CUSTOM MEALS MODAL -->
   <!-- ========================================== -->
-  <div id="settings-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+  <div id="settings-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-gray-200 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-gray-150 pb-3 mb-4">
         <div class="flex items-center gap-2">
@@ -627,7 +703,7 @@
   <script>
     const BASE_IMG_URL = 'https://shellywsas.github.io/my-food-space/';
 
-    // Complete Custom Meals Database
+    // Complete Custom Meals Database (22 distinct dishes, 22 unique images!)
     const defaultMeals = [
       {
         id: 'pancakes',
@@ -649,17 +725,17 @@
       },
       {
         id: 'burger',
-        title: 'המבורגר בקר נקי וצ\'יפס זהוב עם מלח',
+        title: 'המבורגר בקר נקי וצ'יפס זהוב עם מלח',
         category: 'lunch',
         categoryLabel: 'צהריים חם 🍔',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: '15 דקות',
         image: 'images/burger.jpg',
-        desc: 'קציצת בקר עסיסית בלחמנייה חלקה ורכה (בלי שומשום, בלי גבינה!), עם צ\'יפס זהוב פריך עם מלח בלבד.',
+        desc: 'קציצת בקר עסיסית בלחמנייה חלקה ורכה (בלי שומשום, בלי גבינה!), עם צ'יפס זהוב פריך עם מלח בלבד.',
         ingredients: [
           'קציצת המבורגר בקר איכותית נקייה',
           'לחמניית המבורגר חלקה (בלי שומשום בכלל!)',
-          'צ\'יפס זהוב פריך עם מלח בלבד',
+          'צ'יפס זהוב פריך עם מלח בלבד',
           'קטשופ (אופציונלי בצד)'
         ],
         specialNote: 'חשוב מאוד: לחמנייה חלקה בלי שומשום, בלי גבינה, בלי ירקות, ובלי שום תבלינים חוץ ממלח!'
@@ -671,7 +747,7 @@
         categoryLabel: 'צהריים מנחם 🍲',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: 'חם ומנחם',
-        image: 'images/moms_chicken.jpg',
+        image: 'images/meatballs.jpg',
         desc: 'כדורי בשר בקר רכים שמתבשלים ברוטב עגבניות אדום חלק לגמרי (בלי חתיכות עגבנייה ובלי שום ירוקים או עשבי תיבול!), מוגשים על פסטה נקייה או אורז לבן.',
         ingredients: [
           'כדורי בשר בקר (בלי פלפל שחור, רק מלח)',
@@ -687,7 +763,7 @@
         categoryLabel: 'קלאסיקה משביעה 🍝',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: '20 דקות',
-        image: 'images/schnitzel.jpg',
+        image: 'images/bolognese.jpg',
         desc: 'בשר בקר טחון איכותי ברוטב עגבניות אדום וחלק, ללא חתיכות ירק וללא עשבי תיבול, מוגש על פסטה חמה ונקייה.',
         ingredients: [
           'בשר בקר טחון מבושל',
@@ -698,30 +774,14 @@
         specialNote: 'בלי אורגנו, בלי בזיליקום, בלי פלפל שחור – רוטב חלק נקי עם מלח בלבד!'
       },
       {
-        id: 'pita_omelet',
-        title: 'פיתה חמה עם חביתה ומלפפון פריך עם מלח',
-        category: 'quick',
-        categoryLabel: 'בוקר / ערב קל 🥙',
-        badgeColor: 'bg-emerald-100 text-emerald-800',
-        time: '5 דקות',
-        image: 'images/eggs.jpg',
-        desc: 'פיתה רכה וחמימה ממולאת בחביתה צהובה עסיסית ורכה עם מלח בלבד, בליווי פרוסות מלפפון פריכות עם מלח גס.',
-        ingredients: [
-          'פיתה טרייה',
-          '2 ביצים לחביתה (רק מלח)',
-          'מלפפונים טריים חתוכים'
-        ],
-        specialNote: 'חביתה נקייה מביצים ומלח בלבד – בלי שום עשבי תיבול ובלי פלפל שחור!'
-      },
-      {
         id: 'couscous',
         title: 'קוסקוס רך עם מלח או קטשופ ומלפפון',
         category: 'quick',
         categoryLabel: 'פחמימה מנחמת 🥣',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: '5 דקות',
-        image: 'images/schnitzel.jpg',
-        desc: 'קערת קוסקוס רך וחם, מתובל במלח בלבד או עם קטשופ שאוהבים, לצד מלפפונים פריכים.',
+        image: 'images/couscous.jpg',
+        desc: 'קערת קוסקוס רך, פלאפי וחם, מתובל במלח בלבד או עם קטשופ שאוהבים, לצד מלפפונים פריכים עם מלח גס.',
         ingredients: [
           'קוסקוס דק ורך',
           'מלח שולחן או קטשופ',
@@ -736,7 +796,7 @@
         categoryLabel: 'נימוח ומנחם 🥔',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: '15 דקות',
-        image: 'images/moms_chicken.jpg',
+        image: 'images/mashed_potatoes.jpg',
         desc: 'פירה תפוחי אדמה קטיפתי וחלק, מעוך דק עם מעט חמאה ומלח בלבד, ללא גושים וללא שום תבלינים.',
         ingredients: [
           'תפוחי אדמה מבושלים מעוכים חלק',
@@ -752,13 +812,13 @@
         categoryLabel: 'פשוט וטעים 🥔',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: 'חם ופשוט',
-        image: 'images/moms_chicken.jpg',
-        desc: 'תפוחי אדמה רכים מבושלים במים, חתוכים גס עם מלח שולחן או מלח גס. קל לעיכול ומשביע.',
+        image: 'images/boiled_potatoes.jpg',
+        desc: 'תפוחי אדמה רכים מבושלים במים, חתוכים גס עם מלח שולחן או מלח גס. קל לעיכול, מנחם ומשביע.',
         ingredients: [
           'תפוחי אדמה רכים',
           'מלח גס בלבד'
         ],
-        specialNote: 'רק מלח בלבד!'
+        specialNote: 'רק מלח בלבד! בלי שום עשבי תיבול.'
       },
       {
         id: 'schnitzel',
@@ -784,7 +844,7 @@
         badgeColor: 'bg-amber-100 text-amber-800',
         time: 'מחמם',
         image: 'images/chicken_soup.jpg',
-        desc: 'מרק עוף צלול לחלוטין (בלי ירקות מבושלים בצלחת!), עמוס בשקדי מרק אסם צהובים וקראנצ\'יים, אטריות דקות וחתיכות עוף רך בלי עור.',
+        desc: 'מרק עוף צלול לחלוטין (בלי ירקות מבושלים בצלחת!), עמוס בשקדי מרק אסם צהובים וקראנצ'יים, אטריות דקות וחתיכות עוף רך בלי עור.',
         ingredients: [
           'ציר מרק עוף זהוב וצלול',
           'שקדי מרק אסם (השקית הצהובה הקלאסית בשפע!)',
@@ -818,7 +878,7 @@
         badgeColor: 'bg-emerald-100 text-emerald-800',
         time: '5 דקות',
         image: 'images/liver_toast.jpg',
-        desc: 'לחם קלוי וקראנצ\'י עם שכבה נדיבה של ממרח כבד חלק ונקי לחלוטין (בלי שום עירית או ירק מעל), לצד מלפפונים פריכים ומלח.',
+        desc: 'לחם קלוי וקראנצ'י עם שכבה נדיבה של ממרח כבד חלק ונקי לחלוטין (בלי שום עירית או ירק מעל), לצד מלפפונים פריכים ומלח.',
         ingredients: [
           'לחם קלוי / פיתה',
           'ממרח כבד קלאסי חלק',
@@ -830,11 +890,11 @@
         id: 'cheese_crackers',
         title: 'משולשי גבינה רכים על קרקר פריך (פתית/לחמית) ומלפפון',
         category: 'quick',
-        categoryLabel: 'נשנוש מלוח וקראנצ\'י 🧀',
+        categoryLabel: 'נשנוש מלוח וקראנצ'י 🧀',
         badgeColor: 'bg-emerald-100 text-emerald-800',
         time: '3 דקות',
         image: 'images/cheese_crackers.jpg',
-        desc: 'משולשי גבינה רכים מהעטיפה, קרקר דק פריך (פתית/לחמית/Wasa) ומלפפון קראנצ\'י עם מלח.',
+        desc: 'משולשי גבינה רכים מהעטיפה, קרקר דק פריך (פתית/לחמית/Wasa) ומלפפון קראנצ'י עם מלח.',
         ingredients: [
           '2-3 משולשי גבינה (לה ואש קירי / מון בלאן)',
           'קרקר דק פריך (פתית או לחמית)',
@@ -876,15 +936,15 @@
       },
       {
         id: 'egg_salad',
-        title: 'סלט ביצים קשות ומלפפונים קצוצים עם מלח',
+        title: 'ביצים קשות ומלפפונים חתוכים עם מלח גס',
         category: 'quick',
         categoryLabel: 'קלאסי ומרענן 🥗',
         badgeColor: 'bg-emerald-100 text-emerald-800',
         time: '7 דקות',
-        image: 'images/eggs.jpg',
-        desc: '2 ביצים קשות חתוכות לקוביות יחד עם המון מלפפונים טריים פריכים והרבה מלח. פשוט, ממלא וטעים.',
+        image: 'images/egg_salad.jpg',
+        desc: '2 ביצים קשות חתוכות לצד המון מלפפונים טריים פריכים והרבה מלח. פשוט, ממלא וטעים.',
         ingredients: [
-          '2 ביצים קשות',
+          '2 ביצים קשות חצויות',
           '2 מלפפונים קצוצים',
           'מלח שולחן / גס בלבד'
         ],
@@ -892,15 +952,15 @@
       },
       {
         id: 'deli_toast',
-        title: 'טוסט קלוי עם נקניק חזה בקר, קטשופ ומלפפון',
+        title: 'טוסט קלוי עם נקניק חזה בקר, קטשופ וצ'יפס',
         category: 'quick',
-        categoryLabel: 'מנחם וקראנצ\'י 🥪',
+        categoryLabel: 'מנחם וקראנצ'י 🥪',
         badgeColor: 'bg-emerald-100 text-emerald-800',
         time: '5 דקות',
-        image: 'images/liver_toast.jpg',
-        desc: 'טוסט חם עם פרוסות נקניק חזה בקר איכותי, מעט קטשופ ומלפפון פריך בצד.',
+        image: 'images/deli_toast.jpg',
+        desc: 'באגט או לחם קלוי וחם עם פרוסות נקניק חזה בקר איכותי, מעט קטשופ וצ'יפס או מלפפון פריך בצד.',
         ingredients: [
-          'לחם פרוס / פיתה',
+          'לחם קלוי / באגט / פיתה',
           'פרוסות נקניק חזה בקר',
           'קטשופ',
           'מלפפון טרי עם מלח'
@@ -909,45 +969,45 @@
       },
       {
         id: 'pita_cervelat',
-        title: 'פיתה טרייה או פריכיות עם סרוולט קלאסי ומלפפון',
+        title: 'סנדוויץ' עם סרוולט קלאסי ומלפפון',
         category: 'quick',
         categoryLabel: 'זריז וטעים 🥙',
         badgeColor: 'bg-emerald-100 text-emerald-800',
         time: '2 דקות',
-        image: 'images/cheese_crackers.jpg',
-        desc: 'פיתה רכה או פריכיות עם פרוסות נקניק סרוולט קלאסי ומלפפון קראנצ\'י עם מלח.',
+        image: 'images/pita_cervelat.jpg',
+        desc: 'לחם טרי או פריכיות עם פרוסות נקניק סרוולט קלאסי ומלפפון קראנצ'י עם מלח.',
         ingredients: [
-          'פיתה טרייה או פריכיות אורז',
+          'פיתה טרייה או לחם או פריכיות אורז',
           'נקניק סרוולט קלאסי',
           'מלפפון טרי'
         ],
-        specialNote: 'סרוולט קלאסי, בלי רטבים חריפים או מיונז.'
+        specialNote: 'סרוולט קלאסי, בלי רטבים חריפים ובלי מיונז.'
       },
       {
         id: 'hotdogs_pasta',
-        title: 'נקניקיות חמות בלחמנייה או לצד פסטה נקייה',
+        title: 'נקניקיות חמות בלחמנייה חלקה עם קטשופ',
         category: 'lunch',
         categoryLabel: 'חם וכיפי 🌭',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: '10 דקות',
-        image: 'images/schnitzel.jpg',
-        desc: 'נקניקיות חמות מבושלות או צלויות, מוגשות בלחמנייה רכה עם קטשופ או לצד פסטה עם מעט חמאה ומלח.',
+        image: 'images/hotdogs.jpg',
+        desc: 'נקניקיות חמות מבושלות או צלויות בלחמנייה רכה עם קטשופ בלבד (בלי חרדל ובלי בצל), או לצד פסטה נקייה.',
         ingredients: [
-          'נקניקיות',
-          'לחמנייה רכה (בלי שומשום) או פסטה נקייה',
+          'נקניקיות חמות',
+          'לחמנייה רכה (בלי שומשום!) או פסטה נקייה',
           'קטשופ ומלח'
         ],
-        specialNote: 'בלי שומשום על הלחמנייה ובלי תבלינים נוספים.'
+        specialNote: 'בלי שומשום על הלחמנייה, בלי חרדל – קטשופ ומלח בלבד.'
       },
       {
         id: 'latkes',
         title: 'לביבות תפוחי אדמה חמות ופריכות (רק מלח)',
         category: 'lunch',
-        categoryLabel: 'קראנצ\'י מושלם 🥔',
+        categoryLabel: 'קראנצ'י מושלם 🥔',
         badgeColor: 'bg-amber-100 text-amber-800',
         time: '20 דקות',
-        image: 'images/burger.jpg',
-        desc: 'לביבות תפוחי אדמה זהובות וקראנצ\'יות מבחוץ ורכות מבפנים, מתובלות במלח בלבד.',
+        image: 'images/latkes.jpg',
+        desc: 'לביבות תפוחי אדמה זהובות וקראנצ'יות מבחוץ ורכות מבפנים, מתובלות במלח בלבד.',
         ingredients: [
           'תפוחי אדמה מגוררים',
           'ביצה ומעט קמח',
@@ -955,6 +1015,54 @@
           'מלח בלבד'
         ],
         specialNote: 'בלי בצל, בלי פלפל שחור ובלי פטרוזיליה – תפוחי אדמה ומלח בלבד!'
+      },
+      {
+        id: 'pita_omelet',
+        title: 'פיתה חמה וטרייה עם חביתה ומלפפון',
+        category: 'quick',
+        categoryLabel: 'בוקר / ערב קל 🥙',
+        badgeColor: 'bg-emerald-100 text-emerald-800',
+        time: '5 דקות',
+        image: 'images/pita_omelet.jpg',
+        desc: 'פיתה רכה וחמימה ממולאת בחביתה צהובה עסיסית ורכה עם מלח בלבד, בליווי פרוסות מלפפון פריכות עם מלח גס.',
+        ingredients: [
+          'פיתה טרייה רכה',
+          '2 ביצים לחביתה (רק מלח)',
+          'מלפפונים טריים חתוכים'
+        ],
+        specialNote: 'חביתה נקייה מביצים ומלח בלבד – בלי שום עשבי תיבול ובלי פלפל שחור!'
+      },
+      {
+        id: 'canned_corn',
+        title: 'קערת תירס מתוק בשימורים (חם או קר)',
+        category: 'quick',
+        categoryLabel: 'נשנוש מתוק & מלוח 🌽',
+        badgeColor: 'bg-amber-100 text-amber-800',
+        time: '1 דקה',
+        image: 'images/canned_corn.jpg',
+        desc: 'גרגרי תירס מתוקים, פריכים ועסיסיים ישר מקופסת השימורים או מחוממים דקה במיקרוגל עם קורט מלח. נשנוש מתוק-מלוח, מהיר ומשביע בלי שום מאמץ.',
+        ingredients: [
+          'קופסת תירס מתוק בשימורים (גרגרים זהובים)',
+          'קורט מלח שולחן (לפי הטעם)'
+        ],
+        specialNote: 'רק תירס ומלח – בלי חמאה מתובלת ובלי תבלינים!'
+      },
+      {
+        id: 'fruits',
+        title: 'צלחת פירות קיץ מתוקים ומרעננים 🍉',
+        category: 'sweet',
+        categoryLabel: 'מתוק טבעי & מרווה 🍎',
+        badgeColor: 'bg-pink-100 text-pink-800',
+        time: '3 דקות',
+        image: 'images/fruits.jpg',
+        desc: 'פרוסות צוננות של פירות שאת הכי אוהבת: בננות, אבטיח, מלון, תפוחים, אפרסקים, נקטרינות, שזיפים, משמשים ואגסים. מרווה, טבעי, ונותן אנרגיה נקייה בלי נפילות סוכר.',
+        ingredients: [
+          'בננות חתוכות',
+          'אבטיח ומלון קרים',
+          'תפוחים / אגסים',
+          'אפרסקים / נקטרינות / שזיפים'
+        ],
+        specialNote: 'פירות טריים חתוכים וקרים מהמקרר – הכי טבעי, בלי סירופים ובלי רטבים!'
       }
     ];
 
@@ -971,12 +1079,12 @@
       signatureMeals = [...defaultMeals];
     }
 
-    // Grocery Brand Checklist Data
+    // Grocery Brand Checklist Data (With Canned Corn & Summer Fruits!)
     const groceriesData = [
       {
         name: 'שקדי מרק של אסם 🥣',
         brand: 'אסם (השקית הצהובה הקלאסית בלבד!)',
-        note: 'שקדים קטנים צהובים וקראנצ\'יים, לא קרוטונים מרובעים ולא של חברות אחרות!',
+        note: 'שקדים קטנים צהובים וקראנצ'יים, לא קרוטונים מרובעים ולא של חברות אחרות!',
         badge: 'חובה בבית'
       },
       {
@@ -990,6 +1098,18 @@
         brand: 'תנובה GO / דנונה PRO / מולר (טעם וניל או שוקולד)',
         note: 'הבסיס למתכון של הפנקייק חלבון הביתי עם נוטלה!',
         badge: 'מתכון הבית'
+      },
+      {
+        name: 'תירס מתוק בשימורים 🌽',
+        brand: 'שימורי תירס מתוק (גרגרים שלמים פריכים)',
+        note: 'נשנוש מתוק-מלוח מעולה ומהיר! לוודא גרגרים זהובים בלי תבלינים.',
+        badge: 'נשנוש אהוב'
+      },
+      {
+        name: 'פירות קיץ טריים 🍉',
+        brand: 'בננות, תפוחים, מלון, אבטיח, אפרסק, נקטרינה, שזיף, משמש, אגס',
+        note: 'לחתוך קר מהמקרר – פינוק מתוק טבעי שמרגיע חשק למתוק בלי נפילות סוכר!',
+        badge: 'מתוק טבעי'
       },
       {
         name: 'גרנולה נקייה 🌾',
@@ -1013,7 +1133,7 @@
         name: 'קרקר פריך דק 🥖',
         brand: 'פתית (קלאסי) או לחמית או Wasa',
         note: 'דק, פריך, יבש, מושלם למריחת משולש גבינה או ממרח כבד.',
-        badge: 'קראנצ\'י'
+        badge: 'קראנצ'י'
       },
       {
         name: 'ממרח כבד קלאסי 🥪',
@@ -1052,8 +1172,47 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderMealsList('all');
       renderGroceriesGrid();
+      updatePlateBuilder();
+      initNightModeCheck();
       lucide.createIcons();
     });
+
+    // Night Mode Logic (Idea 2)
+    function initNightModeCheck() {
+      const savedMode = localStorage.getItem('night_mode');
+      const hour = new Date().getHours();
+      const isLateNight = hour >= 23 || hour < 5;
+
+      if (savedMode === 'true' || (savedMode === null && isLateNight)) {
+        enableNightMode(true);
+      }
+    }
+
+    function toggleNightMode() {
+      const isDark = document.body.classList.contains('night-mode');
+      enableNightMode(!isDark);
+    }
+
+    function enableNightMode(enable) {
+      const banner = document.getElementById('night-banner');
+      const icon = document.getElementById('night-icon');
+      const label = document.getElementById('night-label');
+
+      if (enable) {
+        document.body.classList.add('night-mode');
+        banner.classList.remove('hidden');
+        label.innerText = 'מצב יום';
+        icon.setAttribute('data-lucide', 'sun');
+        localStorage.setItem('night_mode', 'true');
+      } else {
+        document.body.classList.remove('night-mode');
+        banner.classList.add('hidden');
+        label.innerText = 'מצב לילה';
+        icon.setAttribute('data-lucide', 'moon');
+        localStorage.setItem('night_mode', 'false');
+      }
+      lucide.createIcons();
+    }
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-section').forEach(sec => sec.classList.add('hidden'));
@@ -1146,15 +1305,76 @@
       renderMealsList(category);
     }
 
-    function updatePlateBuilder() {
-      const protein = document.querySelector('input[name="builder_protein"]:checked').value;
-      const carb = document.querySelector('input[name="builder_carb"]:checked').value;
+    // Image Map for Visual Plate Builder (Idea 1)
+    const plateImageMap = {
+      schnitzel: 'images/schnitzel.jpg',
+      meatballs: 'images/meatballs.jpg',
+      bolognese: 'images/bolognese.jpg',
+      burger: 'images/burger.jpg',
+      moms_chicken: 'images/moms_chicken.jpg',
+      eggs: 'images/eggs.jpg',
+      hotdogs: 'images/hotdogs.jpg',
+      deli_toast: 'images/deli_toast.jpg',
+      cheese_crackers: 'images/cheese_crackers.jpg',
+      liver_toast: 'images/liver_toast.jpg',
+      couscous: 'images/couscous.jpg',
+      mashed_potatoes: 'images/mashed_potatoes.jpg',
+      boiled_potatoes: 'images/boiled_potatoes.jpg',
+      latkes: 'images/latkes.jpg',
+      pita_omelet: 'images/pita_omelet.jpg',
+      canned_corn: 'images/canned_corn.jpg'
+    };
 
-      document.getElementById('builder-preview-protein').innerText = protein;
-      document.getElementById('builder-preview-carb').innerText = carb;
+    function updatePlateBuilder() {
+      const selectedProtInput = document.querySelector('input[name="builder_protein"]:checked');
+      const selectedCarbInput = document.querySelector('input[name="builder_carb"]:checked');
+
+      if (!selectedProtInput || !selectedCarbInput) return;
+
+      const protKey = selectedProtInput.value;
+      const carbKey = selectedCarbInput.value;
+
+      const protTitle = selectedProtInput.getAttribute('data-title');
+      const carbTitle = selectedCarbInput.getAttribute('data-title');
+
+      // Update Visual Plate Images and Labels
+      const protImgElem = document.getElementById('plate-protein-img');
+      const carbImgElem = document.getElementById('plate-carb-img');
+
+      if (protImgElem) protImgElem.src = plateImageMap[protKey] || 'images/schnitzel.jpg';
+      if (carbImgElem) carbImgElem.src = plateImageMap[carbKey] || 'images/schnitzel.jpg';
+
+      const protLabelElem = document.getElementById('plate-protein-label');
+      const carbLabelElem = document.getElementById('plate-carb-label');
+
+      if (protLabelElem) protLabelElem.innerText = protTitle;
+      if (carbLabelElem) carbLabelElem.innerText = carbTitle;
     }
 
-    // Share Meal to WhatsApp
+    // Share Built Plate to WhatsApp
+    function shareBuiltPlateToWhatsapp() {
+      const selectedProtInput = document.querySelector('input[name="builder_protein"]:checked');
+      const selectedCarbInput = document.querySelector('input[name="builder_carb"]:checked');
+
+      const protTitle = selectedProtInput ? selectedProtInput.getAttribute('data-title') : 'שניצל ביתי';
+      const carbTitle = selectedCarbInput ? selectedCarbInput.getAttribute('data-title') : 'פסטה נקייה';
+
+      const text = `היי! ❤️
+ממש בא לי להרכיב ארוחה טעימה היום:
+🍽️ *הצלחת שהרכבתי לעצמי:*
+• חלבון: ${protTitle}
+• פחמימה: ${carbTitle}
+• לצד: מלפפון פריך עם מלח גס 🥒
+
+⚠️ *הערה סופר חשובה להכנה:*
+בלי שום תבלינים חוץ ממלח! בלי פלפל שחור, בלי עשבי תיבול או עלים ירוקים, בלי שומשום ובלי גבינה מומסת בבקשה! 🙏
+
+תודה רבה מראש! 🥰`;
+
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    // Share Individual Meal to WhatsApp
     async function shareMealDirectToWhatsapp(mealId) {
       const meal = signatureMeals.find(m => m.id === mealId);
       if (!meal) return;
@@ -1178,7 +1398,6 @@ ${meal.specialNote}
 
 תודה רבה! 🥰`;
 
-      // If mobile supports Web Share with files, attempt it
       if (navigator.share) {
         try {
           await navigator.share({
@@ -1187,9 +1406,7 @@ ${meal.specialNote}
             url: imgFullUrl
           });
           return;
-        } catch (e) {
-          // Fall back to direct whatsapp web link
-        }
+        } catch (e) {}
       }
 
       window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
@@ -1199,25 +1416,6 @@ ${meal.specialNote}
       if (currentSelectedMeal) {
         shareMealDirectToWhatsapp(currentSelectedMeal.id);
       }
-    }
-
-    function shareBuiltPlateToWhatsapp() {
-      const protein = document.querySelector('input[name="builder_protein"]:checked').value;
-      const carb = document.querySelector('input[name="builder_carb"]:checked').value;
-
-      const text = `היי! ❤️
-ממש בא לי להרכיב ארוחה טעימה היום:
-🍽️ *השילוב שלי:*
-• חלבון: ${protein}
-• פחמימה: ${carb}
-• לצד: מלפפון פריך עם מלח גס 🥒
-
-⚠️ *הערה סופר חשובה להכנה:*
-בלי שום תבלינים חוץ ממלח! בלי פלפל שחור, בלי עשבי תיבול או עלים ירוקים, בלי שומשום ובלי גבינה מומסת בבקשה! 🙏
-
-תודה רבה מראש! 🥰`;
-
-      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
     }
 
     // Render Groceries Section
