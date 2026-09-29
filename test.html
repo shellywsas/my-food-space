@@ -189,19 +189,19 @@
   <!-- ========================================== -->
   <!-- NAVIGATION TABS (ZERO SIDE-SCROLL, CLEAN WRAP) -->
   <!-- ========================================== -->
-  <nav class="sticky top-[53px] z-30 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-xs py-2 px-2">
+  <nav class="sticky top-[53px] z-30 bg-white/95 backdrop-blur-md border-b border-gray-200/80 shadow-xs py-2 px-2">
     <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-      <button onclick="switchTab('shuffle')" id="tab-btn-shuffle" class="tab-btn tab-active px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all">
-        <i data-lucide="sparkles" class="w-4 h-4"></i>
-        <span>הגרלת ארוחה 🎲</span>
+      <button onclick="switchTab('meals')" id="tab-btn-meals" class="tab-btn tab-active px-3.5 py-1.5 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all">
+        <i data-lucide="utensils" class="w-4 h-4"></i>
+        <span>מה בא לי לאכול? 🍽️</span>
       </button>
       <button onclick="switchTab('builder')" id="tab-btn-builder" class="tab-btn px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 transition-all">
-        <i data-lucide="utensils" class="w-4 h-4"></i>
-        <span>הרכבת צלחת 🍽️</span>
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>הרכבת צלחת ✨</span>
       </button>
-      <button onclick="switchTab('meals')" id="tab-btn-meals" class="tab-btn px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 transition-all">
-        <i data-lucide="book-open" class="w-4 h-4"></i>
-        <span>כל המאכלים (22) 📖</span>
+      <button onclick="switchTab('shuffle')" id="tab-btn-shuffle" class="tab-btn px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 transition-all">
+        <i data-lucide="dice-5" class="w-4 h-4"></i>
+        <span>הגרלת ארוחה 🎲</span>
       </button>
       <button onclick="switchTab('groceries')" id="tab-btn-groceries" class="tab-btn px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 transition-all">
         <i data-lucide="shopping-cart" class="w-4 h-4"></i>
@@ -209,7 +209,7 @@
       </button>
       <button onclick="switchTab('drinks')" id="tab-btn-drinks" class="tab-btn px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5 transition-all">
         <i data-lucide="cup-soda" class="w-4 h-4"></i>
-        <span>ויטמינצ'יק & שתייה 💧</span>
+        <span>שתייה 💧</span>
       </button>
       <button onclick="switchTab('sos')" id="tab-btn-sos" class="tab-btn px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-semibold text-purple-700 hover:text-purple-900 bg-purple-50 flex items-center gap-1.5 transition-all">
         <i data-lucide="heart" class="w-4 h-4 text-purple-600"></i>
@@ -226,7 +226,7 @@
     <!-- ========================================== -->
     <!-- TAB 1: RANDOM MEAL GENERATOR -->
     <!-- ========================================== -->
-    <section id="tab-content-shuffle" class="tab-section">
+    <section id="tab-content-shuffle" class="tab-section hidden">
       <div class="glass-card rounded-3xl p-4 sm:p-5 mb-5 border border-emerald-100 shadow-sm text-center">
         <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-1.5">
           <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
@@ -468,7 +468,7 @@
     <!-- ========================================== -->
     <!-- TAB 3: ALL 22 RECOMMENDED DISHES -->
     <!-- ========================================== -->
-    <section id="tab-content-meals" class="tab-section hidden">
+    <section id="tab-content-meals" class="tab-section">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
         <div>
           <h2 class="text-lg sm:text-xl font-bold text-gray-800">המאכלים הבטוחים שלי (22)</h2>
@@ -995,7 +995,8 @@
     "tags": [
       "סופר מהיר",
       "חלבון קל לעיכול",
-      "בוקר/ערב"
+      "בוקר/ערב",
+      "solo"
     ]
   },
   {
@@ -1015,7 +1016,8 @@
     "tags": [
       "קל ומרענן",
       "פרוביוטי",
-      "בלי כבדות"
+      "בלי כבדות",
+      "solo"
     ]
   },
   {
@@ -1036,7 +1038,8 @@
     "tags": [
       "אפס מאמץ",
       "חלבון יציב",
-      "קראנצ'י"
+      "קראנצ'י",
+      "solo"
     ]
   },
   {
@@ -1077,7 +1080,8 @@
     "tags": [
       "מהיר ברמות",
       "חטיף משביע",
-      "נחמה של רגע"
+      "נחמה של רגע",
+      "solo"
     ]
   },
   {
@@ -1185,6 +1189,88 @@
       "מתוק בריא",
       "ויטמינים ונוזלים",
       "מרגיע חשקים"
+    ]
+  },
+  {
+    "id": 101,
+    "title": "רק קציצת המבורגר נקייה בלחמנייה חלקה 🍔 (בלי צ'יפס)",
+    "category": "solo",
+    "time": "10 דקות הכנה",
+    "image": "images/burger_solo.jpg",
+    "desc": "קציצת בקר עסיסית בלחמנייה חלקה ורכה (ללא שומשום!), בלי צ'יפס, בלי גבינה ובלי ירוקים. רק המבורגר נטו.",
+    "ingredients": [
+      "קציצת המבורגר בקר עסיסית ואיכותית",
+      "לחמניית המבורגר חלקה לגמרי (ללא שומשום)",
+      "מעט קטשופ חלק (אופציונלי)",
+      "מלח דק בלבד"
+    ],
+    "specialNote": "אזהרה קריטית: רק המבורגר נקי בלחמנייה חלקה (ללא שומשום), בלי צ'יפס, בלי גבינה, בלי עלים!",
+    "sensoryBadge": "סולו | רק המבורגר נקי",
+    "tags": [
+      "סולו",
+      "רק המבורגר",
+      "חלבון נקי",
+      "בלי שומשום"
+    ]
+  },
+  {
+    "id": 102,
+    "title": "רק צ'יפס תפוחי אדמה זהוב ופריך 🍟 (רק מלח)",
+    "category": "solo",
+    "time": "10 דקות טיגון/אפייה",
+    "image": "images/fries_solo.jpg",
+    "desc": "צ'יפס זהוב, חם וקריספי עם מלח דק בלבד (ללא שום תבלינים אחרים, ללא המבורגר). פשוט וטעים.",
+    "ingredients": [
+      "צ'יפס תפוחי אדמה פריך וזהוב",
+      "מלח דק בלבד (ללא שום פפריקה או תבלין מעורב)"
+    ],
+    "specialNote": "רק מלח דק! אסור שום תבלין נוסף, לא תבלין צ'יפס ולא פפריקה.",
+    "sensoryBadge": "סולו | קראנץ' מושלם",
+    "tags": [
+      "סולו",
+      "רק צ'יפס",
+      "קראנצ'י",
+      "נחמה"
+    ]
+  },
+  {
+    "id": 103,
+    "title": "רק פסטה חמה ונקייה עם מלח 🍝 (בלי רטבים)",
+    "category": "solo",
+    "time": "10 דקות בישול",
+    "image": "images/pasta_solo.jpg",
+    "desc": "פסטה חמה ונקייה עם מעט שמן/חמאה ומלח דק בלבד, בלי רטבים, בלי תבלינים ובלי ירוקים.",
+    "ingredients": [
+      "פסטה / ספגטי מבושלים",
+      "מעט שמן קנולה או חמאה שלא יידבק",
+      "מלח דק בלבד"
+    ],
+    "specialNote": "רק מלח! בלי שום רוטב ובלי פלפל שחור.",
+    "sensoryBadge": "סולו | נקייה לחלוטין",
+    "tags": [
+      "סולו",
+      "רק פסטה",
+      "פחמימה נקייה"
+    ]
+  },
+  {
+    "id": 104,
+    "title": "רק שניצל ביתי פריך וזהוב 🍗 (ללא תוספות)",
+    "category": "solo",
+    "time": "10 דקות טיגון",
+    "image": "images/schnitzel_solo.jpg",
+    "desc": "חזה עוף בציפוי פירורי לחם פריכים וזהובים עם מלח בלבד, חם, טרי וללא שום תוספת מסביב.",
+    "ingredients": [
+      "שניצל חזה עוף טרי ודק",
+      "ציפוי פירורי לחם זהוב ופריך",
+      "מלח בלבד"
+    ],
+    "specialNote": "רק מלח בציפוי! אסור פלפל שחור, אסור פטרוזיליה או עשבי תיבול.",
+    "sensoryBadge": "סולו | חלבון פריך",
+    "tags": [
+      "סולו",
+      "רק שניצל",
+      "קראנצ'י"
     ]
   }
 ];
@@ -1503,7 +1589,9 @@
       if (!container) return;
       container.innerHTML = "";
 
-      const filtered = filter === "all" ? signatureMeals : signatureMeals.filter(m => m.category === filter);
+      const filtered = filter === "all" 
+        ? signatureMeals 
+        : signatureMeals.filter(m => m.category === filter || (m.tags && m.tags.includes(filter)));
 
       filtered.forEach(meal => {
         if (!excludedItemsMap[meal.id]) {
@@ -1568,10 +1656,12 @@
     }
 
     function filterMeals(category, btn) {
-      document.querySelectorAll(".filter-btn").forEach(b => {
-        b.className = "filter-btn px-2.5 py-1 rounded-xl text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 shrink-0";
+      document.querySelectorAll(".meal-filter-btn").forEach(b => {
+        b.className = "meal-filter-btn px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:bg-emerald-50 transition active:scale-95";
       });
-      btn.className = "filter-btn px-2.5 py-1 rounded-xl text-xs font-bold bg-emerald-700 text-white shrink-0";
+      if (btn) {
+        btn.className = "meal-filter-btn px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold bg-emerald-600 text-white shadow-sm transition active:scale-95";
+      }
       renderMealsList(category);
     }
 
@@ -1602,10 +1692,10 @@
 
     // Hero solo images
     const soloPlateHeroMap = {
-      schnitzel: { img: "images/schnitzel.jpg", name: "שניצל ביתי פריך וזהוב" },
+      schnitzel: { img: "images/schnitzel_solo.jpg", name: "שניצל ביתי פריך וזהוב" },
       meatballs: { img: "images/meatballs.jpg", name: "כדורי בשר ברוטב חלק" },
       bolognese: { img: "images/bolognese.jpg", name: "בולונז בקר ברוטב חלק" },
-      burger: { img: "images/burger.jpg", name: "קציצת המבורגר נקייה" },
+      burger: { img: "images/burger_solo.jpg", name: "קציצת המבורגר נקייה בלחמנייה חלקה" },
       moms_chicken: { img: "images/moms_chicken.jpg", name: "חתיכות עוף צלוי בתנור" },
       eggs: { img: "images/eggs.jpg", name: "2 ביצי עין" },
       egg_salad: { img: "images/egg_salad.jpg", name: "ביצים קשות פרוסות" },
@@ -1613,11 +1703,11 @@
       deli_toast: { img: "images/deli_toast.jpg", name: "טוסט נקניק חזה בקר" },
       cheese_crackers: { img: "images/cheese_crackers.jpg", name: "משולשי גבינה רכים" },
       liver_toast: { img: "images/liver_toast.jpg", name: "ממרח כבד חלק" },
-      pasta: { img: "images/schnitzel.jpg", name: "פסטה נקייה עם מלח" },
+      pasta: { img: "images/pasta_solo.jpg", name: "פסטה נקייה עם מלח" },
       couscous: { img: "images/couscous.jpg", name: "קוסקוס רך עם מלח/קטשופ" },
       mashed_potatoes: { img: "images/mashed_potatoes.jpg", name: "פירה תפוחי אדמה חלק וקרמי" },
       boiled_potatoes: { img: "images/boiled_potatoes.jpg", name: "תפוחי אדמה מבושלים עם מלח גס" },
-      fries: { img: "images/burger.jpg", name: "צ'יפס זהוב פריך (רק מלח)" },
+      fries: { img: "images/fries_solo.jpg", name: "צ'יפס זהוב פריך (רק מלח)" },
       latkes: { img: "images/latkes.jpg", name: "לביבות תפוחי אדמה חמות" },
       pita: { img: "images/pita_omelet.jpg", name: "פיתה טרייה וחמה" },
       canned_corn: { img: "images/canned_corn.jpg", name: "קערת תירס מתוק בשימורים" }
